@@ -1,7 +1,7 @@
 abstract class User{
   String name;
   String ID;
-  String age;
+  int age;
   String phonenum;
   String email;
   String password;

@@ -2,17 +2,38 @@ import 'Course.dart';
 import 'User.dart';
 
 class Instructor extends User {
-  List<Course> assignedCourses;
-  bool isFullTime; // Indicates whether the instructor is a full-time staff member
+  List<Course> _assignedCourses = [];
+  bool _isFullTime =
+      false; // Indicates whether the instructor is a full-time staff member
 
   Instructor({
-    required super.name,
-    required super.ID,
-    required super.age,
-    required super.phonenum,
-    required super.email,
-    required super.password,
-    required this.assignedCourses,
-    required this.isFullTime,
-  });
+    required String name,
+    required String ID,
+    required int age,
+    required String phonenum,
+    required String email,
+    required String password,
+    required List<Course> assignedCourses,
+    required bool isFullTime,
+  }) : super(
+          name: name,
+          ID: ID,
+          age: age,
+          phonenum: phonenum,
+          email: email,
+          password: password,
+  );
+
+  // Getters
+  List<Course> get assignedCourses => _assignedCourses;
+  bool get isFullTime => _isFullTime;
+
+  // Setters
+  set assignedCourses(List<Course> courses) {
+    _assignedCourses = courses;
+  }
+
+  set isFullTime(bool value) {
+    _isFullTime = value;
+  }
 }
