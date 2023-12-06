@@ -96,3 +96,16 @@ class Student extends User {
     }
   }
 }
+//
+// Student student = Student(
+//   name: "John Doe",
+//   ID: "S001",
+//   age: 20,
+//   phonenum: "123-456-7890",
+//   email: "john.doe@example.com",
+//   password: "password",
+//   year: "Sophomore",
+//   college: "Engineering",
+//   major: "Computer Science",
+//   university: "XYZ University",
+// );

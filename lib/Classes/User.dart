@@ -27,7 +27,7 @@ class User{ // TODO: make abstract?
   }
 
   // Function to view all courses offered in a specific center
-  void viewCoursesInCenter(List<Course> allCourses, Center center) {
+  void viewCoursesInCenter(List<Course> allCourses, myCenter center) {
     print("Courses offered at ${center.centerName}:");
     for (var course in allCourses) {
       if (course.availableCenters.contains(center)) {
@@ -37,7 +37,7 @@ class User{ // TODO: make abstract?
   }
 
   // Function to view all centers that offer a specific course
-  void viewCentersForCourse(List<Center> allCenters, Course course) {
+  void viewCentersForCourse(List<myCenter> allCenters, Course course) {
     print("Centers offering ${course.courseName}:");
     for (var center in allCenters) {
       if (course.availableCenters.contains(center)) {

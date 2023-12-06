@@ -9,7 +9,7 @@ class Course {
   String _courseDescription;
   List<Student> _assignedStudents;
   Instructor _assignedInstructor;
-  List<Center> _availableCenters;
+  List<myCenter> _availableCenters;
   int _maxCapacity;
   DateTime _startDate;
   DateTime _endDate;
@@ -24,7 +24,7 @@ class Course {
     required String courseDescription,
     required List<Student> assignedStudents,
     required Instructor assignedInstructor,
-    required List<Center> availableCenters,
+    required List<myCenter> availableCenters,
     required int maxCapacity,
     required DateTime startDate,
     required DateTime endDate,
@@ -57,7 +57,7 @@ class Course {
   String get courseDescription => _courseDescription;
   List<Student> get assignedStudents => _assignedStudents;
   Instructor get assignedInstructor => _assignedInstructor;
-  List<Center> get availableCenters => _availableCenters;
+  List<myCenter> get availableCenters => _availableCenters;
   int get maxCapacity => _maxCapacity;
   DateTime get startDate => _startDate;
   DateTime get endDate => _endDate;
@@ -87,7 +87,7 @@ class Course {
     _assignedInstructor = value;
   }
 
-  set availableCenters(List<Center> value) {
+  set availableCenters(List<myCenter> value) {
     _availableCenters = value;
   }
 
@@ -120,3 +120,19 @@ class Course {
   }
 
 }
+
+// // Create a sample course
+// Course course = Course(
+//   courseID: "C001",
+//   courseName: "Introduction to Programming",
+//   courseDescription: "Learn the basics of programming.",
+//   assignedStudents: [student],
+//   assignedInstructor: instructor,
+//   availableCenters: [center],
+//   maxCapacity: 50,
+//   startDate: DateTime(2023, 11, 20),
+//   endDate: DateTime(2024, 1, 15),
+//   prerequisites: ["None"],
+//   isActive: true,
+//   courseSchedule: schedule,
+// );

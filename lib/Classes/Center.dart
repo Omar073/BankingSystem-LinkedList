@@ -1,6 +1,6 @@
 import 'Course.dart';
 
-class Center {
+class myCenter {
   String _centerName;
   String _centerAddress;
   String _addressMapsLink;
@@ -9,7 +9,7 @@ class Center {
   late List<Course> _availableCourses = [];
 
   // Constructor
-  Center({
+  myCenter({
     required String centerName,
     required String centerAddress,
     required String addressMapsLink,
@@ -84,3 +84,4 @@ class Center {
   }
 
 }
+
