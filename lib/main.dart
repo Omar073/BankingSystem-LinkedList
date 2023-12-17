@@ -1,4 +1,4 @@
-import 'package:bankingsystem_linkedlist/pages/LandingPage.dart';
+import 'package:bankingsystem_linkedlist/pages/HomeScreen.dart';
 import 'package:bankingsystem_linkedlist/pages/LoginPage.dart';
 import 'package:bankingsystem_linkedlist/pages/SignUp.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
               //    '/profile': (context) => const ProfilePage(),
             },
             // home: const AuthCheck(),
-            home: const LandingPage(),
+            home: const HomePage(),
           );
         });
   }
