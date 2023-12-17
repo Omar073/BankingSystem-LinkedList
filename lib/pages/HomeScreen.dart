@@ -3,6 +3,7 @@ import 'package:bankingsystem_linkedlist/pages/SearchCourses.dart';
 import 'package:flashy_tab_bar2/flashy_tab_bar2.dart';
 import 'package:flutter/material.dart';
 
+import '../adminPage/adminPanel.dart';
 import 'FavouritesPage.dart';
 
 class HomePage extends StatefulWidget {
@@ -19,7 +20,7 @@ class _HomePageState extends State<HomePage> {
     const SearchCourses(), // Your original home page content
     FavouritesPage(), // Add your FavouritesPage here
     const SettingsPage(), // Placeholder for Account Page
-    //const AdminPanel(), // Add your AdminPanel here
+    const AdminPanel(), // Add your AdminPanel here
   ];
 
   @override
