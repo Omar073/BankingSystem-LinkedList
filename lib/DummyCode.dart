@@ -17,7 +17,7 @@ import 'Classes/Student.dart';
 //   major: "Computer Science",
 //   university: "XYZ University",
 // );
-
+//
 // // Create a sample instructor
 // Instructor instructor = Instructor(
 //   name: "Dr. Smith",
@@ -29,7 +29,7 @@ import 'Classes/Student.dart';
 //   assignedCourses: [], // Empty for now
 //   isFullTime: true,
 // );
-
+//
 // // Create a sample center
 // myCenter center = myCenter(
 //   centerName: "Tech Center",
@@ -38,14 +38,14 @@ import 'Classes/Student.dart';
 //   activeHours: "9 AM - 6 PM",
 //   centerCapacity: 100,
 // );
-
+//
 // // Create a sample schedule
 // Schedule schedule = Schedule(
 //   courseDate: DateTime(2023, 11, 25),
 //   frequencyPerWeek: 3,
 //   time: "10:00 AM - 12:00 PM",
 // );
-
+//
 // // Create a sample course
 // Course course = Course(
 //   courseID: "C001",
@@ -61,13 +61,13 @@ import 'Classes/Student.dart';
 //   isActive: true,
 //   courseSchedule: schedule,
 // );
-
+//
 // // Add the course to the instructor's assigned courses
 // instructor.addCourse(course);
 //
 // // Add the course to the center's available courses
 // center.addCourseToCenter(course);
-//
+
 // // Print some information
 // print("Student Name: ${student.name}");
 // print("Instructor Name: ${instructor.name}");

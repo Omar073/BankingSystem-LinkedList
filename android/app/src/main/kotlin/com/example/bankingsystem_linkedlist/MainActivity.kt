@@ -1,4 +1,4 @@
-package com.example.bankingsystem_linkedlist
+package com.example.ClassMate
 
 import io.flutter.embedding.android.FlutterActivity
 

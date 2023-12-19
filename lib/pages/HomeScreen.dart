@@ -1,8 +1,11 @@
-import 'package:bankingsystem_linkedlist/pages/AccountPage.dart';
-import 'package:bankingsystem_linkedlist/pages/SearchCourses.dart';
+import 'package:ClassMate/pages/AccountPage.dart';
+import 'package:ClassMate/pages/SearchCourses.dart';
 import 'package:flashy_tab_bar2/flashy_tab_bar2.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../Classes/User.dart';
+import '../Providers/UserProvider.dart';
 import '../adminPage/adminPanel.dart';
 import 'FavouritesPage.dart';
 
@@ -15,6 +18,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0; // Index of the selected tab
+  late User user;
 
   final List<Widget> _pages = [
     const SearchCourses(), // Your original home page content
@@ -25,6 +29,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    user = context.watch<UserProvider>().user!;
+
     return Scaffold(
       body: _pages[_selectedIndex], // Show the selected page content
       bottomNavigationBar: FlashyTabBar(
@@ -76,21 +82,22 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          FlashyTabBarItem(
-            icon: const Icon(
-              Icons.admin_panel_settings,
-              size: 30,
-              color: Colors.grey,
-            ),
-            title: const Text(
-              'Admin',
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF52B6DF),
+          if (user.isAdmin)
+            FlashyTabBarItem(
+              icon: const Icon(
+                Icons.admin_panel_settings,
+                size: 30,
+                color: Colors.grey,
+              ),
+              title: const Text(
+                'Admin',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF52B6DF),
+                ),
               ),
             ),
-          ),
         ],
         animationDuration: const Duration(milliseconds: 200),
         animationCurve: Curves.easeInExpo,

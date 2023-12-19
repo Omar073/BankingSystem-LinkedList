@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "bankingsystem_linkedlist" "\0"
+            VALUE "FileDescription", "ClassMate" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "bankingsystem_linkedlist" "\0"
+            VALUE "InternalName", "ClassMate" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "bankingsystem_linkedlist.exe" "\0"
-            VALUE "ProductName", "bankingsystem_linkedlist" "\0"
+            VALUE "OriginalFilename", "ClassMate.exe" "\0"
+            VALUE "ProductName", "ClassMate" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

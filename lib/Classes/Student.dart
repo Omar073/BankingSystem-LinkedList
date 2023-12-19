@@ -1,3 +1,7 @@
+import 'dart:core';
+
+import 'package:flutter/foundation.dart';
+
 import 'Course.dart';
 import 'User.dart';
 
@@ -12,12 +16,12 @@ class Student extends User {
 
   // Constructor with named parameters
   Student({
-    required String name,
-    required String ID,
-    required int age,
-    required String phonenum,
-    required String email,
-    required String password,
+    required super.name,
+    required super.ID,
+    required super.age,
+    required super.phonenum,
+    required super.email,
+    required super.password,
     required String year,
     required String college,
     required String major,
@@ -25,12 +29,7 @@ class Student extends User {
     required String university,
     // required List<Course> registeredCourses,
   }) : super(
-          name: name,
-          ID: ID,
-          age: age,
-          phonenum: phonenum,
-          email: email,
-          password: password,
+          isAdmin: false,
   );
 
   // Getters and setters for private attributes
@@ -90,22 +89,136 @@ class Student extends User {
 
   // Function to view registered courses
   void viewRegisteredCourses() {
-    print("Registered Courses:");
+    if (kDebugMode) {
+      print("Registered Courses:");
+    }
     for (var course in _registeredCourses) {
-      print("${course.courseName}");
+      if (kDebugMode) {
+        print(course.courseName);
+      }
     }
   }
 }
-//
-// Student student = Student(
-//   name: "John Doe",
-//   ID: "S001",
-//   age: 20,
-//   phonenum: "123-456-7890",
-//   email: "john.doe@example.com",
-//   password: "password",
-//   year: "Sophomore",
-//   college: "Engineering",
-//   major: "Computer Science",
-//   university: "XYZ University",
-// );
+
+
+// Student 1
+Student studentJohn = Student(
+  name: "John Doe",
+  ID: "S001",
+  age: 20,
+  phonenum: "123-456-7890",
+  email: "john.doe@example.com",
+  password: "john123",
+  year: "Sophomore",
+  college: "Engineering",
+  major: "Mechatronics",
+  university: "XYZ University",
+);
+
+// Student 2
+Student studentJane = Student(
+  name: "Jane Doe",
+  ID: "S002",
+  age: 20,
+  phonenum: "123-456-7890",
+  email: "jane.doe@example.com",
+  password: "jane123",
+  year: "Sophomore",
+  college: "Engineering",
+  major: "Medicine",
+  university: "XYZ University",
+);
+
+// Student 3
+Student studentJack = Student(
+  name: "Jack Doe",
+  ID: "S003",
+  age: 20,
+  phonenum: "123-456-7890",
+  email: "jack.doe@example.com",
+  password: "jack123",
+  year: "Sophomore",
+  college: "Engineering",
+  major: "Business",
+  university: "XYZ University",
+);
+
+// Student 4
+Student studentOmar = Student(
+  name: "Omar Doe",
+  ID: "S004",
+  age: 20,
+  phonenum: "123-456-7890",
+  email: "omar.doe@example.com",
+  password: "omar123",
+  year: "Junior",
+  college: "Engineering",
+  major: "Computer Science",
+  university: "XYZ University",
+);
+
+// Student 5
+Student studentFadel = Student(
+  name: "Fadel Doe",
+  ID: "S005",
+  age: 20,
+  phonenum: "123-456-7890",
+  email: "fadel.doe@example.com",
+  password: "fadel123",
+  year: "Freshman",
+  college: "Engineering",
+  major: "Computer Science",
+  university: "XYZ University",
+);
+
+// Student 6
+Student studentKarim = Student(
+  name: "Karim Doe",
+  ID: "S006",
+  age: 20,
+  phonenum: "123-456-7890",
+  email: "Karim.doe@example.com",
+  password: "Karim123",
+  year: "Senior 1",
+  college: "Engineering",
+  major: "Computer Science",
+  university: "XYZ University",
+);
+
+// Student 7
+Student studentEsmat = Student(
+  name: "Esmat Doe",
+  ID: "S007",
+  age: 20,
+  phonenum: "123-456-7890",
+  email: "esmat.doe@example.com",
+  password: "esmat123",
+  year: "Senior 2",
+  college: "Engineering",
+  major: "Computer Science",
+  university: "XYZ University",
+);
+
+// Student 8
+Student studentYoussef = Student(
+  name: "Youssef Doe",
+  ID: "S008",
+  age: 20,
+  phonenum: "123-456-7890",
+  email: "youssef.doe@example.com",
+  password: "youssef123",
+  year: "Senior 2",
+  college: "Engineering",
+  major: "Computer Science",
+  university: "XYZ University",
+);
+
+List<Student> students = [
+  studentJohn,
+  studentJane,
+  studentJack,
+  studentOmar,
+  studentFadel,
+  studentKarim,
+  studentEsmat,
+];
