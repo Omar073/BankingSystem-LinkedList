@@ -17,13 +17,13 @@ class Instructor extends User {
     required List<Course> assignedCourses,
     required bool isFullTime,
   }) : super(
-    name: name,
-    ID: ID,
-    age: age,
-    phonenum: phonenum,
-    email: email,
-    password: password,
-  ) {
+          name: name,
+          ID: ID,
+          age: age,
+          phonenum: phonenum,
+          email: email,
+          password: password,
+        ) {
     _assignedCourses = assignedCourses;
     _isFullTime = isFullTime;
   }
@@ -85,9 +85,7 @@ class Instructor extends User {
   //     print("Course '${course.courseName}' not found in assigned courses.");
   //   }
   // }
-
 }
-
 
 // Instructor 1
 Instructor instructorNinja = Instructor(
@@ -97,8 +95,8 @@ Instructor instructorNinja = Instructor(
   phonenum: "987-654-3210",
   email: "ninja@example.com",
   password: "NinjaGo",
-  // assignedCourses: [C001],
-  assignedCourses: [],
+  assignedCourses: [C001],
+  // assignedCourses: [],
   isFullTime: true,
 );
 
@@ -123,11 +121,14 @@ Instructor instructorCbum = Instructor(
   phonenum: "987-654-3210",
   email: "Mr.Olympia@Winner.com",
   password: "chris123",
-  assignedCourses: [],
-  // assignedCourses: [C003, C004],
+  // assignedCourses: [],
+  assignedCourses: [C003, C004],
   isFullTime: true,
 );
 
-List<Instructor> instructors = [instructorNinja, instructorSmith, instructorCbum];
+List<Instructor> instructors = [
+  instructorNinja,
+  instructorSmith,
+  instructorCbum
+];
 // List<Instructor> instructors = [instructorNinja, instructorCbum];
-

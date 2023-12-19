@@ -20,8 +20,8 @@ class _LandingPageState extends State<LandingPage> {
   @override
   void initState() {
     super.initState();
-    users.addAll(students);
-    users.addAll(instructors);
+    // users.addAll(students);
+    // users.addAll(instructors);
   }
 
   @override

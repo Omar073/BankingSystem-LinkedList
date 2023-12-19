@@ -48,7 +48,7 @@ class Course {
         _startDate = startDate,
         _endDate = endDate,
         _prerequisites = prerequisites,
-  // _syllabus = syllabus,
+        // _syllabus = syllabus,
         _isActive = isActive,
         _courseSchedule = courseSchedule;
 
@@ -119,7 +119,6 @@ class Course {
   set courseSchedule(Schedule value) {
     _courseSchedule = value;
   }
-
 }
 
 // Course 1
@@ -161,7 +160,7 @@ Course C003 = Course(
   courseName: "Introduction to Mobile Development",
   courseDescription: "Learn the basics of mobile development.",
   assignedStudents: [studentOmar, studentEsmat, studentJack],
-  assignedInstructor: instructorCbum,
+  assignedInstructor: instructorNinja,
   availableCenters: [techCenter],
   maxCapacity: 50,
   startDate: DateTime(2023, 11, 20),
