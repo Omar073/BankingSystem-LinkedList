@@ -82,6 +82,7 @@ class myCenter {
     }
   }
 
+
   // Function to remove a course from the center's available courses
   void removeCourseFromCenter(Course course) {
     if (_availableCourses.contains(course)) {
@@ -105,8 +106,8 @@ myCenter techCenter = myCenter(
   addressMapsLink: "https://maps.example.com/tech-center",
   activeHours: "9 AM - 6 PM",
   centerCapacity: 100,
-  availableCourses: [C003, C002],
-  // availableCourses: [],
+  // availableCourses: [C003, C002],
+   availableCourses: [],
 );
 
 // Center 2
@@ -116,8 +117,8 @@ myCenter pioneerCenter = myCenter(
   addressMapsLink: "https://maps.example.com/pioneer-center",
   activeHours: "10 AM - 7 PM",
   centerCapacity: 350,
-  availableCourses: [C001, C004],
-  // availableCourses: [],
+  // availableCourses: [C001, C004],
+  availableCourses: [],
 );
 
 List<myCenter> centers = [techCenter, pioneerCenter];

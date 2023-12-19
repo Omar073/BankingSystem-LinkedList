@@ -95,8 +95,8 @@ Instructor instructorNinja = Instructor(
   phonenum: "987-654-3210",
   email: "ninja@example.com",
   password: "NinjaGo",
-  assignedCourses: [C001],
-  // assignedCourses: [],
+  //assignedCourses: [C001],
+   assignedCourses: [],
   isFullTime: true,
 );
 
@@ -108,8 +108,8 @@ Instructor instructorSmith = Instructor(
   phonenum: "987-654-3210",
   email: "smith@example.com",
   password: "smith123",
-  assignedCourses: [C002],
-  // assignedCourses: [],
+  //assignedCourses: [C002],
+   assignedCourses: [],
   isFullTime: true,
 );
 
@@ -121,8 +121,8 @@ Instructor instructorCbum = Instructor(
   phonenum: "987-654-3210",
   email: "Mr.Olympia@Winner.com",
   password: "chris123",
-  // assignedCourses: [],
-  assignedCourses: [C003, C004],
+  assignedCourses: [],
+ // assignedCourses: [C003, C004],
   isFullTime: true,
 );
 

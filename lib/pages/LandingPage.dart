@@ -1,3 +1,5 @@
+import 'package:ClassMate/Classes/Center.dart';
+import 'package:ClassMate/Classes/Course.dart';
 import 'package:ClassMate/pages/SignUp.dart';
 import 'package:flutter/material.dart';
 
@@ -20,8 +22,32 @@ class _LandingPageState extends State<LandingPage> {
   @override
   void initState() {
     super.initState();
-    // users.addAll(students);
-    // users.addAll(instructors);
+    // Add some dummy data to the app
+
+    // * add courses to centers
+    techCenter.addCourseToCenter(C003);
+    techCenter.addCourseToCenter(C002);
+
+    pioneerCenter.addCourseToCenter(C001);
+    pioneerCenter.addCourseToCenter(C004);
+
+
+    // * Add instructors to courses
+    C001.addInstructorToCourse(instructorNinja);
+    C002.addInstructorToCourse(instructorCbum);
+    C003.addInstructorToCourse(instructorSmith);
+    C004.addInstructorToCourse(instructorCbum);
+
+    // *
+
+
+
+
+
+
+
+
+
   }
 
   @override
