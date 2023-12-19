@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 import 'Course.dart';
 import 'User.dart';
 
@@ -42,24 +44,34 @@ class Instructor extends User {
   // Function to add a new course to the instructor's assigned courses
   void addCourse(Course course) {
     _assignedCourses.add(course);
-    print("Course '${course.courseName}' added to assigned courses.");
+    if (kDebugMode) {
+      print("Course '${course.courseName}' added to assigned courses.");
+    }
   }
 
   // Function to remove a course from the instructor's assigned courses
   void removeCourse(Course course) {
     if (_assignedCourses.contains(course)) {
       _assignedCourses.remove(course);
-      print("Course '${course.courseName}' removed from assigned courses.");
+      if (kDebugMode) {
+        print("Course '${course.courseName}' removed from assigned courses.");
+      }
     } else {
-      print("Course '${course.courseName}' not found in assigned courses.");
+      if (kDebugMode) {
+        print("Course '${course.courseName}' not found in assigned courses.");
+      }
     }
   }
 
   // Function to view the list of assigned courses
   void viewAssignedCourses() {
-    print("Assigned Courses:");
+    if (kDebugMode) {
+      print("Assigned Courses:");
+    }
     for (var course in _assignedCourses) {
-      print("${course.courseName} - ${course.courseDescription}");
+      if (kDebugMode) {
+        print("${course.courseName} - ${course.courseDescription}");
+      }
     }
   }
 
@@ -76,6 +88,7 @@ class Instructor extends User {
 
 }
 
+
 // Instructor 1
 Instructor instructorNinja = Instructor(
   name: "Net Ninja",
@@ -84,7 +97,8 @@ Instructor instructorNinja = Instructor(
   phonenum: "987-654-3210",
   email: "ninja@example.com",
   password: "NinjaGo",
-  assignedCourses: [C001],
+  // assignedCourses: [C001],
+  assignedCourses: [],
   isFullTime: true,
 );
 
@@ -97,6 +111,7 @@ Instructor instructorSmith = Instructor(
   email: "smith@example.com",
   password: "smith123",
   assignedCourses: [C002],
+  // assignedCourses: [],
   isFullTime: true,
 );
 
@@ -108,9 +123,11 @@ Instructor instructorCbum = Instructor(
   phonenum: "987-654-3210",
   email: "Mr.Olympia@Winner.com",
   password: "chris123",
-  assignedCourses: [C003],
+  assignedCourses: [],
+  // assignedCourses: [C003, C004],
   isFullTime: true,
 );
 
 List<Instructor> instructors = [instructorNinja, instructorSmith, instructorCbum];
+// List<Instructor> instructors = [instructorNinja, instructorCbum];
 

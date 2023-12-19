@@ -60,18 +60,24 @@ class myCenter {
     _addressMapsLink = newMapsLink;
     _activeHours = newActiveHours;
     _centerCapacity = newCapacity;
-    print("Center details updated successfully.");
+    if (kDebugMode) {
+      print("Center details updated successfully.");
+    }
   }
 
   // Function to add a course to the center's available courses
   void addCourseToCenter(Course course) {
     if(!_availableCourses.contains(course)) {
       _availableCourses.add(course);
-      print("Course '${course.courseName}' added to ${_centerName}'s available courses.");
+      if (kDebugMode) {
+        print("Course '${course.courseName}' added to $_centerName's available courses.");
+      }
       return;
     }
     else {
-      print("Course '${course.courseName}' already exists in ${_centerName}'s available courses.");
+      if (kDebugMode) {
+        print("Course '${course.courseName}' already exists in $_centerName's available courses.");
+      }
       return;
     }
   }
@@ -81,11 +87,11 @@ class myCenter {
     if (_availableCourses.contains(course)) {
       _availableCourses.remove(course);
       if (kDebugMode) {
-        print("Course '${course.courseName}' removed from ${_centerName}'s available courses.");
+        print("Course '${course.courseName}' removed from $_centerName's available courses.");
       }
     } else {
       if (kDebugMode) {
-        print("Course '${course.courseName}' not found in ${_centerName}'s available courses.");
+        print("Course '${course.courseName}' not found in $_centerName's available courses.");
       }
     }
   }
@@ -100,6 +106,7 @@ myCenter techCenter = myCenter(
   activeHours: "9 AM - 6 PM",
   centerCapacity: 100,
   availableCourses: [C003, C002],
+  // availableCourses: [],
 );
 
 // Center 2
@@ -110,4 +117,7 @@ myCenter pioneerCenter = myCenter(
   activeHours: "10 AM - 7 PM",
   centerCapacity: 350,
   availableCourses: [C001, C004],
+  // availableCourses: [],
 );
+
+List<myCenter> centers = [techCenter, pioneerCenter];
