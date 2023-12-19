@@ -1,4 +1,4 @@
-import 'package:bankingsystem_linkedlist/pages/SettingsPage.dart';
+import 'package:ClassMate/pages/SettingsPage.dart';
 import 'package:flutter/material.dart';
 
 class SettingsPage extends StatelessWidget {

@@ -76,3 +76,39 @@ class Instructor extends User {
 
 }
 
+// Instructor 1
+Instructor instructorNinja = Instructor(
+  name: "Net Ninja",
+  ID: "I001",
+  age: 35,
+  phonenum: "987-654-3210",
+  email: "ninja@example.com",
+  password: "NinjaGo",
+  assignedCourses: [C001],
+  isFullTime: true,
+);
+
+// Instructor 2
+Instructor instructorSmith = Instructor(
+  name: "Dr. Smith",
+  ID: "I002",
+  age: 35,
+  phonenum: "987-654-3210",
+  email: "smith@example.com",
+  password: "smith123",
+  assignedCourses: [C002],
+  isFullTime: true,
+);
+
+// Instructor 3
+Instructor instructorCbum = Instructor(
+  name: "Chris Bumsead",
+  ID: "I003",
+  age: 35,
+  phonenum: "987-654-3210",
+  email: "Mr.Olympia@Winner.com",
+  password: "chris123",
+  assignedCourses: [C003],
+  isFullTime: true,
+);
+

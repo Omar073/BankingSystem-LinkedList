@@ -1,4 +1,4 @@
-import 'package:bankingsystem_linkedlist/pages/SignUp.dart';
+import 'package:ClassMate/pages/SignUp.dart';
 import 'package:flutter/material.dart';
 
 import 'LoginPage.dart';

@@ -1,4 +1,4 @@
-# bankingsystem_linkedlist
+# ClassMate
 
 A new Flutter project.
 

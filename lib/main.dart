@@ -1,36 +1,23 @@
-import 'package:bankingsystem_linkedlist/pages/HomeScreen.dart';
-import 'package:bankingsystem_linkedlist/pages/LoginPage.dart';
-import 'package:bankingsystem_linkedlist/pages/SignUp.dart';
+import 'package:ClassMate/pages/LandingPage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  static final ValueNotifier<ThemeMode> themeNotifier =
-      ValueNotifier(ThemeMode.light);
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder<ThemeMode>(
-        valueListenable: themeNotifier,
-        builder: (_, ThemeMode currentMode, __) {
-          return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            // theme: AppTheme().lightTheme,
-            // darkTheme: AppTheme().darkTheme,
-            themeMode: currentMode,
-            routes: {
-              '/sign_up': (context) => const SignUp(),
-              '/login': (context) => const LoginPage(),
-              //    '/profile': (context) => const ProfilePage(),
-            },
-            // home: const AuthCheck(),
-            home: const HomePage(),
-          );
-        });
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: LandingPage(),
+    );
   }
 }

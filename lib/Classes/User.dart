@@ -1,5 +1,10 @@
+import 'package:flutter/foundation.dart';
+
 import 'Center.dart';
 import 'Course.dart';
+import 'Instructor.dart';
+import 'Schedule.dart';
+import 'Student.dart';
 
 class User{ // TODO: make abstract?
   String name;
@@ -57,10 +62,18 @@ class User{ // TODO: make abstract?
 
   // Function to view the schedule of a single course
   void viewScheduleForCourse(Course course) {
-    print("Course Schedule for ${course.courseName}:");
-    print("Start Date: ${course.startDate}");
-    print("End Date: ${course.endDate}");
-    print("Schedule: ${course.courseSchedule.courseDate} - ${course.courseSchedule.time}");
+    if (kDebugMode) {
+      print("Course Schedule for ${course.courseName}:");
+      print("Start Date: ${course.startDate}");
+      print("End Date: ${course.endDate}");
+      print("Schedule: ${course.courseSchedule.courseDate} - ${course.courseSchedule.time}");
+    }
   }
 
 }
+
+// // Add the course to the instructor's assigned courses
+// instructor.addCourse(course);
+//
+// // Add the course to the center's available courses
+// center.addCourseToCenter(course);

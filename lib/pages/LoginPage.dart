@@ -15,32 +15,6 @@ class _LoginPageState extends State<LoginPage> {
   final emailCont = TextEditingController();
   final passCont = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-  bool loading = false;
-
-  Future<void> _handleLogin() async {
-    // Validate the form before proceeding
-    if (_formKey.currentState!.validate()) {
-      setState(() => loading = true);
-
-      // Your custom login logic goes here
-
-      // Dismiss the loading page
-      setState(() => loading = false);
-
-      // Handle the success or failure of login
-    }
-  }
-
-  Future<void> _handleGoogleLogin() async {
-    setState(() => loading = true);
-
-    // Your custom Google login logic goes here
-
-    // Dismiss the loading page
-    setState(() => loading = false);
-
-    // Handle the success or failure of Google login
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,9 +22,7 @@ class _LoginPageState extends State<LoginPage> {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
-    return loading
-        ? const CircularProgressIndicator()
-        : Scaffold(
+    return Scaffold(
             body: SingleChildScrollView(
               child: Center(
                 child: Column(
@@ -185,9 +157,9 @@ class _LoginPageState extends State<LoginPage> {
                                     borderRadius: BorderRadius.circular(12.0),
                                   ),
                                   child: MaterialButton(
-                                    onPressed: () async {
+                                    onPressed: () {
                                       // Validate the form before logging in
-                                      await _handleLogin();
+                                      // await _handleLogin();
                                     },
                                     child: const Row(
                                       mainAxisAlignment:
@@ -254,9 +226,8 @@ class _LoginPageState extends State<LoginPage> {
                                     borderRadius: BorderRadius.circular(12.0),
                                   ),
                                   child: MaterialButton(
-                                    onPressed: () async {
-                                      setState(() => loading = true);
-                                      await _handleGoogleLogin();
+                                    onPressed: ()  {
+
                                     },
                                     child: Row(
                                       mainAxisAlignment:

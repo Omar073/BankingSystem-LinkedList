@@ -1,5 +1,5 @@
-import 'package:bankingsystem_linkedlist/pages/AccountPage.dart';
-import 'package:bankingsystem_linkedlist/pages/SearchCourses.dart';
+import 'package:ClassMate/pages/AccountPage.dart';
+import 'package:ClassMate/pages/SearchCourses.dart';
 import 'package:flashy_tab_bar2/flashy_tab_bar2.dart';
 import 'package:flutter/material.dart';
 

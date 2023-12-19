@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 import 'Course.dart';
 
 class myCenter {
@@ -15,6 +17,7 @@ class myCenter {
     required String addressMapsLink,
     required String activeHours,
     required int centerCapacity,
+    List<Course> availableCourses = const [],
   })  : _centerName = centerName,
         _centerAddress = centerAddress,
         _addressMapsLink = addressMapsLink,
@@ -77,11 +80,34 @@ class myCenter {
   void removeCourseFromCenter(Course course) {
     if (_availableCourses.contains(course)) {
       _availableCourses.remove(course);
-      print("Course '${course.courseName}' removed from ${_centerName}'s available courses.");
+      if (kDebugMode) {
+        print("Course '${course.courseName}' removed from ${_centerName}'s available courses.");
+      }
     } else {
-      print("Course '${course.courseName}' not found in ${_centerName}'s available courses.");
+      if (kDebugMode) {
+        print("Course '${course.courseName}' not found in ${_centerName}'s available courses.");
+      }
     }
   }
 
 }
 
+// Center 1
+myCenter techCenter = myCenter(
+  centerName: "Tech Center",
+  centerAddress: "123 Tech Street, City",
+  addressMapsLink: "https://maps.example.com/tech-center",
+  activeHours: "9 AM - 6 PM",
+  centerCapacity: 100,
+  availableCourses: [C003, C002],
+);
+
+// Center 2
+myCenter pioneerCenter = myCenter(
+  centerName: "Pioneer Center",
+  centerAddress: "456 Pioneer Street, City",
+  addressMapsLink: "https://maps.example.com/pioneer-center",
+  activeHours: "10 AM - 7 PM",
+  centerCapacity: 350,
+  availableCourses: [C001, C004],
+);

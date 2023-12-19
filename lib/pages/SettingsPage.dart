@@ -10,17 +10,17 @@ class SettingPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Settings'),
-        actions: [
-          IconButton(
-              icon: Icon(MyApp.themeNotifier.value == ThemeMode.light
-                  ? Icons.dark_mode
-                  : Icons.light_mode),
-              onPressed: () {
-                MyApp.themeNotifier.value =
-                    MyApp.themeNotifier.value == ThemeMode.light
-                        ? ThemeMode.dark
-                        : ThemeMode.light;
-              })
+        actions: const [
+          // IconButton(
+          //     icon: Icon(MyApp.themeNotifier.value == ThemeMode.light
+          //         ? Icons.dark_mode
+          //         : Icons.light_mode),
+          //     onPressed: () {
+          //       MyApp.themeNotifier.value =
+          //           MyApp.themeNotifier.value == ThemeMode.light
+          //               ? ThemeMode.dark
+          //               : ThemeMode.light;
+          //     })
         ],
       ),
       body: const SingleChildScrollView(
