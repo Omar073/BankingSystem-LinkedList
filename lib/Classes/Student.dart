@@ -1,3 +1,5 @@
+import 'dart:core';
+
 import 'package:flutter/foundation.dart';
 
 import 'Course.dart';

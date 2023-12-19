@@ -112,3 +112,5 @@ Instructor instructorCbum = Instructor(
   isFullTime: true,
 );
 
+List<Instructor> instructors = [instructorNinja, instructorSmith, instructorCbum];
+

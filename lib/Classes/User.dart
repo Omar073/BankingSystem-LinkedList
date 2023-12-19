@@ -72,8 +72,6 @@ class User{ // TODO: make abstract?
 
 }
 
-// // Add the course to the instructor's assigned courses
-// instructor.addCourse(course);
-//
-// // Add the course to the center's available courses
-// center.addCourseToCenter(course);
+List<User> users = [];
+// Users.addAll(students);
+// Users.addAll(instructors);

@@ -185,3 +185,5 @@ Course C004 = Course(
   isActive: true,
   courseSchedule: schedule2,
 );
+
+List<Course> courses = [C001, C002, C003, C004];

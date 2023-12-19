@@ -1,6 +1,9 @@
 import 'package:ClassMate/pages/SignUp.dart';
 import 'package:flutter/material.dart';
 
+import '../Classes/Instructor.dart';
+import '../Classes/Student.dart';
+import '../Classes/User.dart';
 import 'LoginPage.dart';
 
 class LandingPage extends StatefulWidget {
@@ -13,6 +16,13 @@ class LandingPage extends StatefulWidget {
 class _LandingPageState extends State<LandingPage> {
   double height = 300;
   double width = 300;
+
+  @override
+  void initState() {
+    super.initState();
+    users.addAll(students);
+    users.addAll(instructors);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +61,7 @@ class _LandingPageState extends State<LandingPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
+          children: [
             const SizedBox(height: 25),
             const Text(
               'Welcome to \nClassmate',
@@ -73,12 +83,6 @@ class _LandingPageState extends State<LandingPage> {
               width: 296,
               height: 50,
               child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => LoginPage()),
-                  );
-                },
                 style: ButtonStyle(
                   backgroundColor:
                       MaterialStateProperty.all<Color>(Colors.orange),
@@ -95,13 +99,19 @@ class _LandingPageState extends State<LandingPage> {
                     fontSize: 24,
                   ),
                 ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginPage()), // * Go to LoginPage
+                  );
+                },
               ),
             ),
             TextButton(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SignUp()),
+                  MaterialPageRoute(builder: (context) => SignUp()), // * Go to SignUp
                 );
               },
               child: const Text(
