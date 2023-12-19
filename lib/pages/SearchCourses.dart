@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../Classes/Course.dart';
 import '../Classes/User.dart';
 import '../Providers/UserProvider.dart';
+import '../Widgets/CourseItem.dart';
 
 class SearchCourses extends StatefulWidget {
   const SearchCourses({Key? key}) : super(key: key);
@@ -19,6 +21,16 @@ class _SearchCoursesState extends State<SearchCourses> {
     setState(() {
       _isCoursesSelected = selected;
     });
+  }
+
+  List<CourseItem> _buildCourseItems(List<Course> courses) {
+    return courses.map((course) {
+      return CourseItem(
+        courseName: course.courseName,
+        courseCode: course.courseID,
+        courseID: course.courseID,
+      );
+    }).toList();
   }
 
   @override
@@ -111,9 +123,10 @@ class _SearchCoursesState extends State<SearchCourses> {
                       height: screenHeight / 1.7,
                       child: ListView.builder(
                         shrinkWrap: true,
-                        itemCount:
-                            5, // Replace with your desired number of items
-                        itemBuilder: (context, index) {},
+                        itemCount: _buildCourseItems(courses).length,
+                        itemBuilder: (context, index) {
+                          return _buildCourseItems(courses)[index];
+                        },
                       ),
                     )
                   : Container(
@@ -121,7 +134,7 @@ class _SearchCoursesState extends State<SearchCourses> {
                       child: ListView.builder(
                         shrinkWrap: true,
                         itemCount:
-                            5, // Replace with your desired number of items
+                            5, // Replace with the desired number of items
                         itemBuilder: (context, index) {},
                       ),
                     ),
