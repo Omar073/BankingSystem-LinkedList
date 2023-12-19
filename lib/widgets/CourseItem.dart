@@ -1,5 +1,5 @@
-// import 'package:class_mate/pages/CourseInfo.dart';
 import 'package:flutter/material.dart';
+import '../pages/CourseInfo.dart';
 // import 'package:class_mate/pages/CourseInfo.dart';
 
 class CourseItem extends StatelessWidget {
@@ -18,16 +18,20 @@ class CourseItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Navigate to CourseInfoScreen
-        // Navigator.of(context).push(
-        //   MaterialPageRoute(
-        //     builder: (context) => CourseInfo(
-        //         courseID: this.courseID,
-        //         courseName: this.courseName,
-        //         courseCode: this
-        //             .courseCode), // Replace with your CourseInfoScreen widget
-        //   ),
-        // );
+      //  Navigate to CourseInfoScreen
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => CourseInfo(
+                courseID: this.courseID,
+                courseName: this.courseName,
+                courseCode: this
+                    .courseCode
+                , isCourseFollowed: false,
+            ),
+
+            // Replace with your CourseInfoScreen widget
+          ),
+        );
       },
       child: Container(
         width: double.infinity,
