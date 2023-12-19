@@ -16,12 +16,12 @@ class Student extends User {
 
   // Constructor with named parameters
   Student({
-    required String name,
-    required String ID,
-    required int age,
-    required String phonenum,
-    required String email,
-    required String password,
+    required super.name,
+    required super.ID,
+    required super.age,
+    required super.phonenum,
+    required super.email,
+    required super.password,
     required String year,
     required String college,
     required String major,
@@ -29,12 +29,7 @@ class Student extends User {
     required String university,
     // required List<Course> registeredCourses,
   }) : super(
-          name: name,
-          ID: ID,
-          age: age,
-          phonenum: phonenum,
-          email: email,
-          password: password,
+          isAdmin: false,
   );
 
   // Getters and setters for private attributes

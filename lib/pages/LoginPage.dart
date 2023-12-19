@@ -1,5 +1,10 @@
+import 'package:ClassMate/pages/HomeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+
+import '../Classes/User.dart';
+import '../Providers/UserProvider.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -73,7 +78,7 @@ class _LoginPageState extends State<LoginPage> {
                       const Padding(
                         padding: EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 0),
                         child: Text(
-                          "Email",
+                          "Email or ID",
                           style: TextStyle(
                               fontSize: 18, fontWeight: FontWeight.bold),
                         ),
@@ -88,7 +93,7 @@ class _LoginPageState extends State<LoginPage> {
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12.0),
                             ),
-                            hintText: 'Enter your email',
+                            hintText: 'Enter email or ID',
                           ),
                         ),
                       ),
@@ -155,8 +160,40 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             child: MaterialButton(
                               onPressed: () {
+                                bool found = false;
                                 String email = emailCont.text;
                                 String password = passCont.text;
+                                for(User u in users){
+                                  if((u.email == email || u.ID == email) && u.password == password){
+                                    found = true;
+                                    context.read<UserProvider>().setCurrentUser(u);
+                                    Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => HomePage()),
+                                    );
+                                  }
+                                }
+                                if(!found){
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                        title: const Text('Error'),
+                                        content: const Text('Wrong email or password'),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              emailCont.clear();
+                                              passCont.clear();
+                                              Navigator.of(context).pop();
+                                            },
+                                            child: const Text('OK'),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
+                                }
 
                               },
                               child: const Row(
@@ -176,69 +213,69 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: Container(
-                                margin: const EdgeInsets.only(right: 8.0),
-                                height: 1.0, // Adjust the height as needed
-                                color: Colors.grey[600], // Color of the dashes
-                              ),
-                            ),
-                            Text(
-                              "or",
-                              style: TextStyle(
-                                color: Colors.grey[800],
-                                fontSize: 18,
-                              ),
-                            ),
-                            Expanded(
-                              child: Container(
-                                margin: const EdgeInsets.only(left: 8.0),
-                                height: 1.0, // Adjust the height as needed
-                                color: Colors.grey[600], // Color of the dashes
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Center(
-                        child: Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Container(
-                            padding: const EdgeInsets.all(8.0),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              border: Border.all(
-                                color: Colors.grey.shade300, // Border color
-                                width: 2.0, // Border width
-                              ),
-                              borderRadius: BorderRadius.circular(12.0),
-                            ),
-                            child: MaterialButton(
-                              onPressed: () {},
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    width: 50.0,
-                                    height: 50.0,
-                                    alignment: Alignment.center,
-                                    child:
-                                        Image.asset("assets/images/google.png"),
-                                  ),
-                                  const Text(
-                                    "Login with Google",
-                                    style: TextStyle(fontSize: 18),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
+                      // Padding(
+                      //   padding: const EdgeInsets.all(16.0),
+                      //   child: Row(
+                      //     children: [
+                      //       Expanded(
+                      //         child: Container(
+                      //           margin: const EdgeInsets.only(right: 8.0),
+                      //           height: 1.0, // Adjust the height as needed
+                      //           color: Colors.grey[600], // Color of the dashes
+                      //         ),
+                      //       ),
+                      //       Text(
+                      //         "or",
+                      //         style: TextStyle(
+                      //           color: Colors.grey[800],
+                      //           fontSize: 18,
+                      //         ),
+                      //       ),
+                      //       Expanded(
+                      //         child: Container(
+                      //           margin: const EdgeInsets.only(left: 8.0),
+                      //           height: 1.0, // Adjust the height as needed
+                      //           color: Colors.grey[600], // Color of the dashes
+                      //         ),
+                      //       ),
+                      //     ],
+                      //   ),
+                      // ),
+                      // Center(
+                      //   child: Padding(
+                      //     padding: const EdgeInsets.all(16.0),
+                      //     child: Container(
+                      //       padding: const EdgeInsets.all(8.0),
+                      //       decoration: BoxDecoration(
+                      //         color: Colors.white,
+                      //         border: Border.all(
+                      //           color: Colors.grey.shade300, // Border color
+                      //           width: 2.0, // Border width
+                      //         ),
+                      //         borderRadius: BorderRadius.circular(12.0),
+                      //       ),
+                      //       child: MaterialButton(
+                      //         onPressed: () {},
+                      //         child: Row(
+                      //           mainAxisAlignment: MainAxisAlignment.center,
+                      //           children: [
+                      //             Container(
+                      //               width: 50.0,
+                      //               height: 50.0,
+                      //               alignment: Alignment.center,
+                      //               child:
+                      //                   Image.asset("assets/images/google.png"),
+                      //             ),
+                      //             const Text(
+                      //               "Login with Google",
+                      //               style: TextStyle(fontSize: 18),
+                      //             )
+                      //           ],
+                      //         ),
+                      //       ),
+                      //     ),
+                      //   ),
+                      // ),
                       const SizedBox(height: 10),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -259,6 +296,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ],
                       ),
+                      const SizedBox(height: 50),
                     ],
                   ),
                 ),

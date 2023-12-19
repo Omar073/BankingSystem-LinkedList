@@ -13,6 +13,7 @@ class User{ // TODO: make abstract?
   String phonenum;
   String email;
   String password;
+  bool isAdmin = false;
 
   User({
     required this.name,
@@ -20,7 +21,8 @@ class User{ // TODO: make abstract?
     required this.age,
     required this.phonenum,
     required this.email,
-    required this.password
+    required this.password,
+    required this.isAdmin
   });
 
   // Function to view all available courses
@@ -29,6 +31,10 @@ class User{ // TODO: make abstract?
     for (var course in allCourses) {
       print("${course.courseName} - ${course.courseDescription}");
     }
+  }
+
+  String getFirstName() {
+    return name.split(" ")[0];
   }
 
   // Function to view all courses offered in a specific center
@@ -72,6 +78,16 @@ class User{ // TODO: make abstract?
 
 }
 
-List<User> users = [];
+User admin1 = User(
+  name: "Admin 1",
+  ID: "admin",
+  age: 30,
+  phonenum: "0123456789",
+  email: "admin@example.com",
+  password: "admin",
+  isAdmin: true
+);
+
+List<User> users = [admin1];
 // Users.addAll(students);
 // Users.addAll(instructors);

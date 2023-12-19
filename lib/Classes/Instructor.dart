@@ -8,21 +8,16 @@ class Instructor extends User {
   bool _isFullTime = false;
 
   Instructor({
-    required String name,
-    required String ID,
-    required int age,
-    required String phonenum,
-    required String email,
-    required String password,
+    required super.name,
+    required super.ID,
+    required super.age,
+    required super.phonenum,
+    required super.email,
+    required super.password,
     required List<Course> assignedCourses,
     required bool isFullTime,
   }) : super(
-          name: name,
-          ID: ID,
-          age: age,
-          phonenum: phonenum,
-          email: email,
-          password: password,
+          isAdmin: false,
         ) {
     _assignedCourses = assignedCourses;
     _isFullTime = isFullTime;
