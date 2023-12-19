@@ -134,6 +134,16 @@ class Course {
       print("The course '${_courseName}' already has an instructor.");
     }
   }
+
+  void addCenterToCourse(myCenter center) {
+    if (_availableCenters == null) {
+      _availableCenters = [center];
+    } else {
+      _availableCenters!.add(center);
+    }
+    print("Center '${center.centerName}' added to the course '${_courseName}'.");
+  }
+
 }
 
 // Course 1
