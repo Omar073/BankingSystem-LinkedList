@@ -16,9 +16,7 @@ class Instructor extends User {
     required super.password,
     required List<Course> assignedCourses,
     required bool isFullTime,
-  }) : super(
-          isAdmin: false,
-        ) {
+  }) : super() {
     _assignedCourses = assignedCourses;
     _isFullTime = isFullTime;
   }
@@ -91,7 +89,7 @@ Instructor instructorNinja = Instructor(
   email: "ninja@example.com",
   password: "NinjaGo",
   //assignedCourses: [C001],
-   assignedCourses: [],
+  assignedCourses: [],
   isFullTime: true,
 );
 
@@ -104,7 +102,7 @@ Instructor instructorSmith = Instructor(
   email: "smith@example.com",
   password: "smith123",
   //assignedCourses: [C002],
-   assignedCourses: [],
+  assignedCourses: [],
   isFullTime: true,
 );
 
@@ -117,7 +115,7 @@ Instructor instructorCbum = Instructor(
   email: "Mr.Olympia@Winner.com",
   password: "chris123",
   assignedCourses: [],
- // assignedCourses: [C003, C004],
+  // assignedCourses: [C003, C004],
   isFullTime: true,
 );
 
