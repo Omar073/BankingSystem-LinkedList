@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../Classes/User.dart';
+import '../Providers/UserProvider.dart';
 
 class SearchCourses extends StatefulWidget {
   const SearchCourses({Key? key}) : super(key: key);
@@ -9,6 +13,7 @@ class SearchCourses extends StatefulWidget {
 
 class _SearchCoursesState extends State<SearchCourses> {
   bool _isCoursesSelected = true;
+  late User user;
 
   void _toggleSelected(bool selected) {
     setState(() {
@@ -18,6 +23,7 @@ class _SearchCoursesState extends State<SearchCourses> {
 
   @override
   Widget build(BuildContext context) {
+    user = context.watch<UserProvider>().user!;
     final EdgeInsets padding = MediaQuery.of(context).padding;
     final screenHeight = MediaQuery.of(context).size.height;
 
@@ -37,7 +43,7 @@ class _SearchCoursesState extends State<SearchCourses> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Hi, User!',
+                    'Hi, ${user.getFirstName()}!',
                     style: const TextStyle(
                       color: Color(0xFF0F172A),
                       fontSize: 24,

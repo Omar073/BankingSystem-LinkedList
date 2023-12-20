@@ -1,5 +1,10 @@
+import 'package:flutter/foundation.dart';
+
 import 'Center.dart';
 import 'Course.dart';
+import 'Instructor.dart';
+import 'Schedule.dart';
+import 'Student.dart';
 
 class User{ // TODO: make abstract?
   String name;
@@ -8,6 +13,7 @@ class User{ // TODO: make abstract?
   String phonenum;
   String email;
   String password;
+  bool isAdmin = false;
 
   User({
     required this.name,
@@ -15,7 +21,8 @@ class User{ // TODO: make abstract?
     required this.age,
     required this.phonenum,
     required this.email,
-    required this.password
+    required this.password,
+    required this.isAdmin
   });
 
   // Function to view all available courses
@@ -24,6 +31,10 @@ class User{ // TODO: make abstract?
     for (var course in allCourses) {
       print("${course.courseName} - ${course.courseDescription}");
     }
+  }
+
+  String getFirstName() {
+    return name.split(" ")[0];
   }
 
   // Function to view all courses offered in a specific center
@@ -57,10 +68,26 @@ class User{ // TODO: make abstract?
 
   // Function to view the schedule of a single course
   void viewScheduleForCourse(Course course) {
-    print("Course Schedule for ${course.courseName}:");
-    print("Start Date: ${course.startDate}");
-    print("End Date: ${course.endDate}");
-    print("Schedule: ${course.courseSchedule.courseDate} - ${course.courseSchedule.time}");
+    if (kDebugMode) {
+      print("Course Schedule for ${course.courseName}:");
+      print("Start Date: ${course.startDate}");
+      print("End Date: ${course.endDate}");
+      print("Schedule: ${course.courseSchedule.courseDate} - ${course.courseSchedule.time}");
+    }
   }
 
 }
+
+User admin1 = User(
+  name: "Admin 1",
+  ID: "admin",
+  age: 30,
+  phonenum: "0123456789",
+  email: "admin@example.com",
+  password: "admin",
+  isAdmin: true
+);
+
+List<User> users = [admin1];
+// Users.addAll(students);
+// Users.addAll(instructors);

@@ -1,6 +1,11 @@
-import 'package:bankingsystem_linkedlist/pages/SignUp.dart';
+import 'package:ClassMate/Classes/Center.dart';
+import 'package:ClassMate/Classes/Course.dart';
+import 'package:ClassMate/pages/SignUp.dart';
 import 'package:flutter/material.dart';
 
+import '../Classes/Instructor.dart';
+import '../Classes/Student.dart';
+import '../Classes/User.dart';
 import 'LoginPage.dart';
 
 class LandingPage extends StatefulWidget {
@@ -13,6 +18,41 @@ class LandingPage extends StatefulWidget {
 class _LandingPageState extends State<LandingPage> {
   double height = 300;
   double width = 300;
+
+  @override
+  void initState() {
+    super.initState();
+    users.addAll(students);
+    users.addAll(instructors);
+
+    // Add some dummy data to the app
+
+    // * add courses to centers
+    techCenter.addCourseToCenter(C003);
+    techCenter.addCourseToCenter(C002);
+
+    pioneerCenter.addCourseToCenter(C001);
+    pioneerCenter.addCourseToCenter(C004);
+
+    // * add centers to coursers
+    C001.addCenterToCourse(pioneerCenter);
+    C004.addCenterToCourse(pioneerCenter);
+
+    C002.addCenterToCourse(techCenter);
+    C003.addCenterToCourse(techCenter);
+
+    // * Add instructors to courses
+    C001.addInstructorToCourse(instructorNinja);
+    C002.addInstructorToCourse(instructorCbum);
+    C003.addInstructorToCourse(instructorSmith);
+    C004.addInstructorToCourse(instructorCbum);
+
+    // *Add courses to Instructors
+    instructorNinja.addCourse(C001);
+    instructorCbum.addCourse(C002);
+    instructorSmith.addCourse(C003);
+    instructorCbum.addCourse(C004);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +91,7 @@ class _LandingPageState extends State<LandingPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
+          children: [
             const SizedBox(height: 25),
             const Text(
               'Welcome to \nClassmate',
@@ -73,12 +113,6 @@ class _LandingPageState extends State<LandingPage> {
               width: 296,
               height: 50,
               child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => LoginPage()),
-                  );
-                },
                 style: ButtonStyle(
                   backgroundColor:
                       MaterialStateProperty.all<Color>(Colors.orange),
@@ -95,13 +129,19 @@ class _LandingPageState extends State<LandingPage> {
                     fontSize: 24,
                   ),
                 ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginPage()), // * Go to LoginPage
+                  );
+                },
               ),
             ),
             TextButton(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SignUp()),
+                  MaterialPageRoute(builder: (context) => SignUp()), // * Go to SignUp
                 );
               },
               child: const Text(

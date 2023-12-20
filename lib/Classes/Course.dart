@@ -2,14 +2,15 @@ import 'Center.dart';
 import 'Instructor.dart';
 import 'Student.dart';
 import 'Schedule.dart';
+import 'User.dart';
 
 class Course {
   String _courseID;
   String _courseName;
   String _courseDescription;
   List<Student> _assignedStudents;
-  Instructor _assignedInstructor;
-  List<myCenter> _availableCenters;
+  Instructor? _assignedInstructor;
+  List<myCenter>? _availableCenters;
   int _maxCapacity;
   DateTime _startDate;
   DateTime _endDate;
@@ -23,8 +24,7 @@ class Course {
     required String courseName,
     required String courseDescription,
     required List<Student> assignedStudents,
-    required Instructor assignedInstructor,
-    required List<myCenter> availableCenters,
+    // required List<myCenter> availableCenters,
     required int maxCapacity,
     required DateTime startDate,
     required DateTime endDate,
@@ -41,13 +41,12 @@ class Course {
         _courseName = courseName,
         _courseDescription = courseDescription,
         _assignedStudents = assignedStudents,
-        _assignedInstructor = assignedInstructor,
-        _availableCenters = availableCenters,
+        // _availableCenters = availableCenters,
         _maxCapacity = maxCapacity,
         _startDate = startDate,
         _endDate = endDate,
         _prerequisites = prerequisites,
-  // _syllabus = syllabus,
+        // _syllabus = syllabus,
         _isActive = isActive,
         _courseSchedule = courseSchedule;
 
@@ -56,8 +55,11 @@ class Course {
   String get courseName => _courseName;
   String get courseDescription => _courseDescription;
   List<Student> get assignedStudents => _assignedStudents;
-  Instructor get assignedInstructor => _assignedInstructor;
-  List<myCenter> get availableCenters => _availableCenters;
+  // Get the assigned instructor for the course
+  Instructor get assignedInstructor => _assignedInstructor!;
+
+  // Get the available centers for the course
+  List<myCenter> get availableCenters => _availableCenters!;
   int get maxCapacity => _maxCapacity;
   DateTime get startDate => _startDate;
   DateTime get endDate => _endDate;
@@ -119,20 +121,90 @@ class Course {
     _courseSchedule = value;
   }
 
+  void addStudentToCourse(Student student) {
+    _assignedStudents.add(student);
+    print("Student '${student.name}' added to the course '${_courseName}'.");
+  }
+
+  void addInstructorToCourse(Instructor instructor) {
+    if (_assignedInstructor == null) {
+      _assignedInstructor = instructor;
+      print("Instructor '${instructor.name}' added to the course '${_courseName}'.");
+    } else {
+      print("The course '${_courseName}' already has an instructor.");
+    }
+  }
+
+  void addCenterToCourse(myCenter center) {
+    if (_availableCenters == null) {
+      _availableCenters = [center];
+    } else {
+      _availableCenters!.add(center);
+    }
+    print("Center '${center.centerName}' added to the course '${_courseName}'.");
+  }
+
 }
 
-// // Create a sample course
-// Course course = Course(
-//   courseID: "C001",
-//   courseName: "Introduction to Programming",
-//   courseDescription: "Learn the basics of programming.",
-//   assignedStudents: [student],
-//   assignedInstructor: instructor,
-//   availableCenters: [center],
-//   maxCapacity: 50,
-//   startDate: DateTime(2023, 11, 20),
-//   endDate: DateTime(2024, 1, 15),
-//   prerequisites: ["None"],
-//   isActive: true,
-//   courseSchedule: schedule,
-// );
+// Course 1
+Course C001 = Course(
+  courseID: "C001",
+  courseName: "Introduction to Programming",
+  courseDescription: "Learn the basics of programming.",
+  assignedStudents: students,
+  // assignedInstructor: instructorNinja,
+  // availableCenters: [pioneerCenter],
+  maxCapacity: 50,
+  startDate: DateTime(2023, 11, 20),
+  endDate: DateTime(2024, 1, 15),
+  prerequisites: ["None"],
+  isActive: true,
+  courseSchedule: schedule1,
+);
+
+// Course 2
+Course C002 = Course(
+  courseID: "C002",
+  courseName: "Introduction to Web Development",
+  courseDescription: "Learn the basics of web development.",
+  assignedStudents: [studentFadel, studentKarim, studentJane],
+  // availableCenters: [techCenter],
+  maxCapacity: 50,
+  startDate: DateTime(2023, 11, 20),
+  endDate: DateTime(2024, 1, 15),
+  prerequisites: ["None"],
+  isActive: true,
+  courseSchedule: schedule2,
+);
+
+// Course 3
+Course C003 = Course(
+  courseID: "C003",
+  courseName: "Introduction to Mobile Development",
+  courseDescription: "Learn the basics of mobile development.",
+  assignedStudents: [studentOmar, studentEsmat, studentJack],
+  // availableCenters: [techCenter],
+  maxCapacity: 50,
+  startDate: DateTime(2023, 11, 20),
+  endDate: DateTime(2024, 1, 15),
+  prerequisites: ["None"],
+  isActive: true,
+  courseSchedule: schedule1,
+);
+
+// Course 4
+Course C004 = Course(
+  courseID: "C004",
+  courseName: "Logic Design",
+  courseDescription: "Learn the basics of data science.",
+  assignedStudents: [studentFadel, studentYoussef],
+  // availableCenters: [pioneerCenter],
+  maxCapacity: 50,
+  startDate: DateTime(2023, 11, 20),
+  endDate: DateTime(2024, 1, 15),
+  prerequisites: ["None"],
+  isActive: true,
+  courseSchedule: schedule2,
+);
+
+List<Course> courses = [C001, C002, C003, C004];
