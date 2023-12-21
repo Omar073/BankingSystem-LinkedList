@@ -6,22 +6,31 @@ import '../Classes/User.dart';
 import '../Providers/UserProvider.dart';
 import '../pages/CourseInfo.dart'; // Import your CourseInfo class
 
-class FavouritesPage extends StatelessWidget {
+class FavouritesPage extends StatefulWidget {
+  const FavouritesPage({super.key});
+
+  @override
+  State<FavouritesPage> createState() => _FavouritesPageState();
+}
+
+class _FavouritesPageState extends State<FavouritesPage> {
+  late User user;
+
   @override
   Widget build(BuildContext context) {
     // Assuming you have a UserProvider that provides the current user
-    User? user = context.watch<UserProvider>().user;
+    user = context.watch<UserProvider>().user!;
 
     // Check if the user is a Student and has registered courses
-    if (user is Student && user.registeredCourses.isNotEmpty) {
-      List<Course> registeredCourses = user.registeredCourses;
+    if (user is Student && (user as Student).registeredCourses.isNotEmpty) {
+      List<Course> registeredCourses = (user as Student).registeredCourses;
 
       return Scaffold(
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(16.0),
+            const Padding(
+              padding: EdgeInsets.all(16.0),
               child: Text(
                 'My Registered Courses',
                 style: TextStyle(
@@ -48,10 +57,8 @@ class FavouritesPage extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                             builder: (context) => CourseInfo(
-                              courseID: course.courseID,
-                              courseName: course.courseName,
-                              courseCode: course.courseID,
-                              isCourseFollowed: true, // You may adjust this based on your logic
+                              course: course,
+                              onChange: () { setState(() {}); },
                             ),
                           ),
                         );
@@ -90,7 +97,7 @@ class FavouritesPage extends StatelessWidget {
       );
     } else {
       // If the user is not a Student or has no registered courses
-      return Scaffold(
+      return const Scaffold(
         body: Center(
           child: Text('No registered courses.'),
         ),

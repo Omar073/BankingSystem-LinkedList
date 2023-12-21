@@ -1,35 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../Classes/Course.dart';
 import '../Classes/Student.dart';
 import '../Classes/User.dart';
 import '../Providers/UserProvider.dart';
 import '../pages/CourseInfo.dart';
 // import 'package:class_mate/pages/CourseInfo.dart';
 
-class CourseCard extends StatelessWidget {
-  final String courseName;
-  final String courseCode;
-  final String courseID;
+class CourseCard extends StatefulWidget {
+  final Course course;
   late User user;
 
   CourseCard({
-    required this.courseName,
-    required this.courseCode,
-    required this.courseID,
+    required this.course,
     super.key,
   });
 
   @override
+  State<CourseCard> createState() => _CourseCardState();
+}
+
+class _CourseCardState extends State<CourseCard> {
+
+  @override
   Widget build(BuildContext context) {
-    user = context.watch<UserProvider>().user!;
+    widget.user = context.watch<UserProvider>().user!;
 
     // Check if the course is followed by the user
-    bool kisCourseFollowed = false;
-    if (user is Student) {
-      kisCourseFollowed = (user as Student).isCourseFollowed(courseID);
+    bool isCourseFollowed = false;
+    if (widget.user is Student) {
+      isCourseFollowed = (widget.user as Student).isCourseFollowed(widget.course.courseID);
 
     }
-
 
     return GestureDetector(
       onTap: () {
@@ -37,10 +39,8 @@ class CourseCard extends StatelessWidget {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) => CourseInfo(
-                courseID: courseID,
-                courseName: courseName,
-                courseCode: courseCode
-                , isCourseFollowed: kisCourseFollowed,
+              course: widget.course,
+              onChange: () { setState(() {}); },
             ),
 
             // Replace with your CourseInfoScreen widget
@@ -71,7 +71,7 @@ class CourseCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      courseName,
+                      widget.course.courseName,
                       style: const TextStyle(
                         color: Color(0xFF132440),
                         fontSize: 18,
@@ -81,7 +81,7 @@ class CourseCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      courseCode,
+                      widget.course.courseID,
                       style: const TextStyle(
                         color: Color(0xFF64748B),
                         fontSize: 14,
@@ -115,10 +115,8 @@ class CourseCard extends StatelessWidget {
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) => CourseInfo(
-                          courseID: courseID,
-                          courseName: courseName,
-                          courseCode: courseCode
-                          , isCourseFollowed: kisCourseFollowed ,
+                          course: widget.course,
+                          onChange: () { setState(() {}); },
                         ),
                         // Replace with your CourseInfoScreen widget
                       ),

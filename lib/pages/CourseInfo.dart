@@ -1,4 +1,5 @@
 import 'package:ClassMate/Classes/Course.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -8,16 +9,12 @@ import '../Classes/User.dart';
 import '../Providers/UserProvider.dart';
 
 class CourseInfo extends StatefulWidget {
-  final String courseID;
-  final String courseName;
-  final String courseCode;
-  bool isCourseFollowed;
+  final Course course;
+  final VoidCallback onChange;
 
   CourseInfo({
-    required this.courseID,
-    required this.courseName,
-    required this.courseCode,
-    required this.isCourseFollowed,
+    required this.course,
+    required this.onChange,
     super.key,
   });
 
@@ -27,9 +24,15 @@ class CourseInfo extends StatefulWidget {
 
 class _CourseInfoState extends State<CourseInfo> {
   late User user;
+  bool isCourseFollowed = false;
+
   @override
   Widget build(BuildContext context) {
     user = context.watch<UserProvider>().user!;
+    if (user is Student) {
+      isCourseFollowed =
+          (user as Student).isCourseFollowed(widget.course.courseID);
+    }
     double width = MediaQuery.of(context).size.width;
 
     return MaterialApp(
@@ -38,7 +41,7 @@ class _CourseInfoState extends State<CourseInfo> {
         backgroundColor: Colors.blueGrey[100],
         appBar: AppBar(
           title: Text(
-            widget.courseName,
+            widget.course.courseName,
             style: const TextStyle(color: Colors.black, fontFamily: 'Poppins'),
           ),
           centerTitle: true,
@@ -70,26 +73,42 @@ class _CourseInfoState extends State<CourseInfo> {
                   height: 250,
                   child: Center(
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(top: 50.0),
+                          padding: const EdgeInsets.symmetric(horizontal: 20)
+                              .copyWith(top: 12.0),
                           child: Center(
                             child: Text(
-                              widget.courseName,
+                              widget.course.courseName,
+                              textAlign: TextAlign.center,
                               style: const TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 30),
                             ),
                           ),
                         ),
-                        Text(
-                          widget.courseCode,
-                          style:
-                              TextStyle(fontSize: 15, color: Colors.grey[700]),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 16.0),
+                          child: Text(
+                            widget.course.courseID,
+                            style: TextStyle(
+                                fontSize: 15, color: Colors.grey[700]),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 16.0),
+                          child: Text(
+                            // get assigned instructor
+                            'Instructor: ${widget.course.assignedInstructor.name}',
+                            style: TextStyle(
+                                fontSize: 15, color: Colors.grey[700]),
+                          ),
                         ),
                         const SizedBox(
                           height: 25,
                         ),
-                        if (user is! Instructor)
+                        if (user is Student)
                           Container(
                             height: 40,
                             width: 180,
@@ -107,57 +126,57 @@ class _CourseInfoState extends State<CourseInfo> {
                                     const Color.fromARGB(255, 233, 240, 255),
                                 foregroundColor: Colors.black,
                               ),
-                              onPressed: () async {
-                                if (widget.isCourseFollowed && user is Student){
+                              onPressed: () {
+                                if (isCourseFollowed && user is Student) {
                                   try {
                                     // Find the corresponding Course object
-                                    Course selectedCourse = courses
-                                        .firstWhere(
-                                          (course) =>
-                                      course.courseID == widget.courseID,
+                                    Course selectedCourse = courses.firstWhere(
+                                      (course) =>
+                                          course.courseID ==
+                                          widget.course.courseID,
                                     );
 
                                     // remove the course to the student's registered course list
-                                    (user as Student).unregisterCourse(
-                                        selectedCourse);
-                                    widget.isCourseFollowed =
-                                    !widget.isCourseFollowed;
+                                    (user as Student)
+                                        .unregisterCourse(selectedCourse);
                                   } catch (e) {
-                                    print(e);
-                                    // Handle the case when the course is not found
-                                    print('Course not found!');
-                                  }
-
-
-                                }else {
-
-                                  if (
-                                      user is Student) {
-                                    try {
-                                      // Find the corresponding Course object
-                                      Course selectedCourse = courses
-                                          .firstWhere(
-                                            (course) =>
-                                        course.courseID == widget.courseID,
-                                      );
-
-                                      // Add the course to the student's registered course list
-                                      (user as Student).registerCourse(
-                                          selectedCourse);
-                                      widget.isCourseFollowed =
-                                      !widget.isCourseFollowed;
-                                    } catch (e) {
+                                    if (kDebugMode) {
                                       print(e);
-                                      // Handle the case when the course is not found
+                                    }
+                                    // Handle the case when the course is not found
+                                    if (kDebugMode) {
                                       print('Course not found!');
                                     }
                                   }
-                                }
-                                setState(() {});
+                                } else {
+                                  if (user is Student) {
+                                    try {
+                                      // Find the corresponding Course object
+                                      Course selectedCourse =
+                                          courses.firstWhere(
+                                        (course) =>
+                                            course.courseID ==
+                                            widget.course.courseID,
+                                      );
 
+                                      // Add the course to the student's registered course list
+                                      (user as Student)
+                                          .registerCourse(selectedCourse);
+                                    } catch (e) {
+                                      if (kDebugMode) {
+                                        print(e);
+                                      }
+                                      // Handle the case when the course is not found
+                                      if (kDebugMode) {
+                                        print('Course not found!');
+                                      }
+                                    }
+                                  }
+                                }
+                                setState(() {widget.onChange();});
                               },
                               child: Text(
-                                widget.isCourseFollowed ? 'Unfollow' : 'Follow',
+                                isCourseFollowed ? 'Unfollow' : 'Follow',
                                 style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18,

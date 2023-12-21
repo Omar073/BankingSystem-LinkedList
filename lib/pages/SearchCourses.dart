@@ -26,9 +26,7 @@ class _SearchCoursesState extends State<SearchCourses> {
   List<CourseCard> _buildCourseItems(List<Course> courses) {
     return courses.map((course) {
       return CourseCard(
-        courseName: course.courseName,
-        courseCode: course.courseID,
-        courseID: course.courseID,
+        course: course,
       );
     }).toList();
   }
