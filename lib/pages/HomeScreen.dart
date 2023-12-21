@@ -4,6 +4,7 @@ import 'package:flashy_tab_bar2/flashy_tab_bar2.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../Classes/Admin.dart';
 import '../Classes/User.dart';
 import '../Providers/UserProvider.dart';
 import '../adminPage/adminPanel.dart';
@@ -82,7 +83,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          if (user.isAdmin)
+          if (user is Admin)
             FlashyTabBarItem(
               icon: const Icon(
                 Icons.admin_panel_settings,

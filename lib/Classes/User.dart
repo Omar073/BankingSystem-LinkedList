@@ -1,19 +1,19 @@
 import 'package:flutter/foundation.dart';
 
+import 'Admin.dart';
 import 'Center.dart';
 import 'Course.dart';
 import 'Instructor.dart';
 import 'Schedule.dart';
 import 'Student.dart';
 
-class User{ // TODO: make abstract?
+abstract class User{ // TODO: make abstract?
   String name;
   String ID;
   int age;
   String phonenum;
   String email;
   String password;
-  bool isAdmin = false;
 
   User({
     required this.name,
@@ -22,7 +22,6 @@ class User{ // TODO: make abstract?
     required this.phonenum,
     required this.email,
     required this.password,
-    required this.isAdmin
   });
 
   // Function to view all available courses
@@ -68,8 +67,8 @@ class User{ // TODO: make abstract?
       print("Instructor: ${course.assignedInstructor.name}");
       print("Start Date: ${course.startDate}");
       print("End Date: ${course.endDate}");
+      // Add more details as needed.
     }
-    // Add more details as needed.
   }
 
   // Function to view the schedule of a single course
@@ -83,16 +82,6 @@ class User{ // TODO: make abstract?
   }
 
 }
-
-User admin1 = User(
-  name: "Admin 1",
-  ID: "admin",
-  age: 30,
-  phonenum: "0123456789",
-  email: "admin@example.com",
-  password: "admin",
-  isAdmin: true
-);
 
 List<User> users = [admin1];
 // Users.addAll(students);
