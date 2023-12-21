@@ -4,10 +4,10 @@ import 'package:provider/provider.dart';
 import '../Classes/Course.dart';
 import '../Classes/User.dart';
 import '../Providers/UserProvider.dart';
-import '../Widgets/CourseItem.dart';
+import '../Widgets/CourseCard.dart';
 
 class SearchCourses extends StatefulWidget {
-  const SearchCourses({Key? key}) : super(key: key);
+  const SearchCourses({super.key});
 
   @override
   _SearchCoursesState createState() => _SearchCoursesState();
@@ -73,16 +73,16 @@ class _SearchCoursesState extends State<SearchCourses> {
                   color: const Color(0xFFF5F7FA),
                   borderRadius: BorderRadius.circular(8.0),
                 ),
-                child: Row(
+                child: const Row(
                   children: [
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Icon(
                         Icons.search,
                         color: Colors.grey,
                       ),
                     ),
-                    const Expanded(
+                    Expanded(
                       child: TextField(
                         decoration: InputDecoration(
                           hintText: 'Search',
@@ -90,15 +90,15 @@ class _SearchCoursesState extends State<SearchCourses> {
                         ),
                       ),
                     ),
-                    IconButton(
-                      icon: const Icon(
-                        Icons.filter_list,
-                        color: Color(0xFF7BB4E3),
-                      ),
-                      onPressed: () {
-                        // Handle filter button press
-                      },
-                    ),
+                    // IconButton(
+                    //   icon: const Icon(
+                    //     Icons.filter_list,
+                    //     color: Color(0xFF7BB4E3),
+                    //   ),
+                    //   onPressed: () {
+                    //     // Handle filter button press
+                    //   },
+                    // ),
                   ],
                 ),
               ),
