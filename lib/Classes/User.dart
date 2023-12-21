@@ -39,10 +39,14 @@ class User{ // TODO: make abstract?
 
   // Function to view all courses offered in a specific center
   void viewCoursesInCenter(List<Course> allCourses, myCenter center) {
-    print("Courses offered at ${center.centerName}:");
+    if (kDebugMode) {
+      print("Courses offered at ${center.centerName}:");
+    }
     for (var course in allCourses) {
       if (course.availableCenters.contains(center)) {
-        print("${course.courseName} - ${course.courseDescription}");
+        if (kDebugMode) {
+          print("${course.courseName} - ${course.courseDescription}");
+        }
       }
     }
   }
@@ -58,11 +62,13 @@ class User{ // TODO: make abstract?
   }
 
   void viewCourseDetails(Course course) {
-    print("Course Details for ${course.courseName}:");
-    print("Description: ${course.courseDescription}");
-    print("Instructor: ${course.assignedInstructor.name}");
-    print("Start Date: ${course.startDate}");
-    print("End Date: ${course.endDate}");
+    if (kDebugMode) {
+      print("Course Details for ${course.courseName}:");
+      print("Description: ${course.courseDescription}");
+      print("Instructor: ${course.assignedInstructor.name}");
+      print("Start Date: ${course.startDate}");
+      print("End Date: ${course.endDate}");
+    }
     // Add more details as needed.
   }
 

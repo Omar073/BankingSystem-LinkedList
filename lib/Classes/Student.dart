@@ -56,9 +56,13 @@ class Student extends User {
   void registerCourse(Course course) {
     if (!_registeredCourses.contains(course)) {
       _registeredCourses.add(course);
-      print("Course registered successfully");
+      if (kDebugMode) {
+        print("Course registered successfully");
+      }
     } else {
-      print("You are already registered for this course");
+      if (kDebugMode) {
+        print("You are already registered for this course");
+      }
     }
   }
 
