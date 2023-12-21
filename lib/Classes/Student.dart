@@ -110,6 +110,11 @@ class Student extends User {
       }
     }
   }
+
+  // Function to check if a course is registered
+  bool isCourseFollowed(String courseId) {
+    return registeredCourses.any((course) => course.courseID == courseId);
+  }
 }
 
 // Student 1
