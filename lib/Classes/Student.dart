@@ -28,9 +28,7 @@ class Student extends User {
     // required Date bdate,
     required String university,
     // required List<Course> registeredCourses,
-  }) : super(
-          isAdmin: false,
-  );
+  }) : super();
 
   // Getters and setters for private attributes
   // Getters and setters for private attributes
@@ -77,7 +75,6 @@ class Student extends User {
     return _registeredCourses.contains(course);
   }
 
-
   // Function to view grades
   // void viewGrades() {
   //   print("Your Grades:");
@@ -99,7 +96,6 @@ class Student extends User {
     }
   }
 }
-
 
 // Student 1
 Student studentJohn = Student(

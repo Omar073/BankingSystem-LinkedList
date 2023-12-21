@@ -1,11 +1,25 @@
 import 'package:ClassMate/pages/SettingsPage.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class SettingsPage extends StatelessWidget {
-  const SettingsPage({Key? key});
+import '../Classes/User.dart';
+import '../Providers/UserProvider.dart';
+import 'LoginPage.dart';
+
+class SettingsPage extends StatefulWidget {
+  const SettingsPage({super.key});
+
+  @override
+  State<SettingsPage> createState() => _SettingsPageState();
+}
+
+class _SettingsPageState extends State<SettingsPage> {
+  late User user;
 
   @override
   Widget build(BuildContext context) {
+    user = context.watch<UserProvider>().user!;
+
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -53,7 +67,7 @@ class SettingsPage extends StatelessWidget {
                           ),
                           const SizedBox(height: 5),
                           Text(
-                            "User", // Replace with the user's name or any default text
+                            user.getFirstName(),
                             style: const TextStyle(
                               fontSize: 17,
                             ),
@@ -66,7 +80,7 @@ class SettingsPage extends StatelessWidget {
                         child: IconButton(
                           icon: const Icon(Icons.logout),
                           onPressed: () {
-                            // Handle logout action
+                            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LoginPage()));
                           },
                         ),
                       ),
