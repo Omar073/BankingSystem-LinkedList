@@ -1,7 +1,9 @@
+import 'package:ClassMate/Classes/Course.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../Classes/Instructor.dart';
+import '../Classes/Student.dart';
 import '../Classes/User.dart';
 import '../Providers/UserProvider.dart';
 
@@ -106,9 +108,29 @@ class _CourseInfoState extends State<CourseInfo> {
                                 foregroundColor: Colors.black,
                               ),
                               onPressed: () async {
-                                widget.isCourseFollowed =
-                                    !widget.isCourseFollowed;
+                                widget.isCourseFollowed = !widget.isCourseFollowed;
                                 setState(() {});
+
+                                print('Follow button pressed!');
+
+                                print(widget.courseID);
+
+                                if (widget.isCourseFollowed && user is Student) {
+                                  try {
+                                    // Find the corresponding Course object
+                                    Course selectedCourse = courses.firstWhere(
+                                          (course) => course.courseID == widget.courseID,
+                                    );
+
+                                    // Add the course to the student's registered course list
+                                    (user as Student).registerCourse(selectedCourse);
+                                  } catch (e) {
+
+                                    print(e);
+                                    // Handle the case when the course is not found
+                                    print('Course not found!');
+                                  }
+                                }
                               },
                               child: Text(
                                 widget.isCourseFollowed ? 'Unfollow' : 'Follow',

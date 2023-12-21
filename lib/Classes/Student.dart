@@ -7,33 +7,44 @@ import 'User.dart';
 
 class Student extends User {
   // Private attributes
-  late int _year;
+  late String _year;
   late String _college;
   late String _major;
-  // late Date _bdate;
   late String _university;
   late List<Course> _registeredCourses;
 
   // Constructor with named parameters
   Student({
-    required super.name,
-    required super.ID,
-    required super.age,
-    required super.phonenum,
-    required super.email,
-    required super.password,
-    required String year,
+    required String name,
+    required String ID,
+    required int age,
+    required String phonenum,
+    required String email,
+    required String password,
+    required String year, // Change from String to int
     required String college,
     required String major,
-    // required Date bdate,
     required String university,
-    // required List<Course> registeredCourses,
-  }) : super();
+  }) : super(
+    name: name,
+    ID: ID,
+    age: age,
+    phonenum: phonenum,
+    email: email,
+    password: password,
+  ) {
+    _year = year;
+    _college = college;
+    _major = major;
+    _university = university;
+    _registeredCourses = []; // Initialize the list
+  }
+
 
   // Getters and setters for private attributes
   // Getters and setters for private attributes
-  int get year => _year;
-  set year(int value) => _year = value;
+  String get year => _year;
+  set year(String value) => _year = value;
 
   String get college => _college;
   set college(String value) => _college = value;
