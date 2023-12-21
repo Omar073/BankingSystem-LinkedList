@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 import 'Center.dart';
 import 'Instructor.dart';
 import 'Student.dart';
@@ -123,15 +125,21 @@ class Course {
 
   void addStudentToCourse(Student student) {
     _assignedStudents.add(student);
-    print("Student '${student.name}' added to the course '${_courseName}'.");
+    if (kDebugMode) {
+      print("\nStudent '${student.name}' added to the course '${_courseName}'.");
+    }
   }
 
   void addInstructorToCourse(Instructor instructor) {
     if (_assignedInstructor == null) {
       _assignedInstructor = instructor;
-      print("Instructor '${instructor.name}' added to the course '${_courseName}'.");
+      if (kDebugMode) {
+        print("\nInstructor '${instructor.name}' added to the course '$_courseName'.");
+      }
     } else {
-      print("The course '${_courseName}' already has an instructor.");
+      if (kDebugMode) {
+        print("\nThe course '$_courseName' already has an instructor.");
+      }
     }
   }
 
@@ -141,7 +149,9 @@ class Course {
     } else {
       _availableCenters!.add(center);
     }
-    print("Center '${center.centerName}' added to the course '${_courseName}'.");
+    if (kDebugMode) {
+      print("Center '${center.centerName}' added to the course '${_courseName}'.");
+    }
   }
 
 }

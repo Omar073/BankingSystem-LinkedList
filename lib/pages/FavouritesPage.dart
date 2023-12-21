@@ -20,8 +20,8 @@ class FavouritesPage extends StatelessWidget {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(16.0),
+            const Padding(
+              padding: EdgeInsets.all(16.0),
               child: Text(
                 'My Registered Courses',
                 style: TextStyle(
@@ -48,9 +48,7 @@ class FavouritesPage extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                             builder: (context) => CourseInfo(
-                              courseID: course.courseID,
-                              courseName: course.courseName,
-                              courseCode: course.courseID,
+                              course: course,
                               isCourseFollowed: true, // You may adjust this based on your logic
                             ),
                           ),

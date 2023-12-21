@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../Classes/Course.dart';
 import '../Classes/Student.dart';
 import '../Classes/User.dart';
 import '../Providers/UserProvider.dart';
@@ -7,15 +8,11 @@ import '../pages/CourseInfo.dart';
 // import 'package:class_mate/pages/CourseInfo.dart';
 
 class CourseCard extends StatelessWidget {
-  final String courseName;
-  final String courseCode;
-  final String courseID;
+  final Course course;
   late User user;
 
   CourseCard({
-    required this.courseName,
-    required this.courseCode,
-    required this.courseID,
+    required this.course,
     super.key,
   });
 
@@ -26,7 +23,7 @@ class CourseCard extends StatelessWidget {
     // Check if the course is followed by the user
     bool kisCourseFollowed = false;
     if (user is Student) {
-      kisCourseFollowed = (user as Student).isCourseFollowed(courseID);
+      kisCourseFollowed = (user as Student).isCourseFollowed(course.courseID);
 
     }
 
@@ -37,9 +34,7 @@ class CourseCard extends StatelessWidget {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) => CourseInfo(
-                courseID: courseID,
-                courseName: courseName,
-                courseCode: courseCode
+                course: course
                 , isCourseFollowed: kisCourseFollowed,
             ),
 
@@ -71,7 +66,7 @@ class CourseCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      courseName,
+                      course.courseName,
                       style: const TextStyle(
                         color: Color(0xFF132440),
                         fontSize: 18,
@@ -81,7 +76,7 @@ class CourseCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      courseCode,
+                      course.courseID,
                       style: const TextStyle(
                         color: Color(0xFF64748B),
                         fontSize: 14,
@@ -115,10 +110,8 @@ class CourseCard extends StatelessWidget {
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) => CourseInfo(
-                          courseID: courseID,
-                          courseName: courseName,
-                          courseCode: courseCode
-                          , isCourseFollowed: kisCourseFollowed ,
+                          course: course,
+                          isCourseFollowed: kisCourseFollowed ,
                         ),
                         // Replace with your CourseInfoScreen widget
                       ),
