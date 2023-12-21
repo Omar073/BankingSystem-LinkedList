@@ -3,8 +3,8 @@ import 'package:provider/provider.dart';
 
 import '../Classes/Course.dart';
 import '../Classes/User.dart';
+import '../Custom widgets/CourseCard.dart';
 import '../Providers/UserProvider.dart';
-import '../Widgets/CourseCard.dart';
 
 class SearchCourses extends StatefulWidget {
   const SearchCourses({super.key});
@@ -23,9 +23,9 @@ class _SearchCoursesState extends State<SearchCourses> {
     });
   }
 
-  List<CourseItem> _buildCourseItems(List<Course> courses) {
+  List<CourseCard> _buildCourseItems(List<Course> courses) {
     return courses.map((course) {
-      return CourseItem(
+      return CourseCard(
         courseName: course.courseName,
         courseCode: course.courseID,
         courseID: course.courseID,

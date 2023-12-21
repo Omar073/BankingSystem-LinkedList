@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class CourseInfo extends StatelessWidget {
+import '../Classes/Instructor.dart';
+import '../Classes/User.dart';
+import '../Providers/UserProvider.dart';
+
+class CourseInfo extends StatefulWidget {
   final String courseID;
   final String courseName;
   final String courseCode;
-  final bool isCourseFollowed;
+  bool isCourseFollowed;
 
-  const CourseInfo({
+  CourseInfo({
     required this.courseID,
     required this.courseName,
     required this.courseCode,
@@ -15,7 +20,14 @@ class CourseInfo extends StatelessWidget {
   });
 
   @override
+  State<CourseInfo> createState() => _CourseInfoState();
+}
+
+class _CourseInfoState extends State<CourseInfo> {
+  late User user;
+  @override
   Widget build(BuildContext context) {
+    user = context.watch<UserProvider>().user!;
     double width = MediaQuery.of(context).size.width;
 
     return MaterialApp(
@@ -24,7 +36,7 @@ class CourseInfo extends StatelessWidget {
         backgroundColor: Colors.blueGrey[100],
         appBar: AppBar(
           title: Text(
-            courseName,
+            widget.courseName,
             style: const TextStyle(color: Colors.black, fontFamily: 'Poppins'),
           ),
           centerTitle: true,
@@ -59,52 +71,54 @@ class CourseInfo extends StatelessWidget {
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(top: 50.0),
-                          child: Text(
-                            courseName,
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 30),
+                          child: Center(
+                            child: Text(
+                              widget.courseName,
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 30),
+                            ),
                           ),
                         ),
                         Text(
-                          courseCode,
+                          widget.courseCode,
                           style:
-                          TextStyle(fontSize: 15, color: Colors.grey[700]),
+                              TextStyle(fontSize: 15, color: Colors.grey[700]),
                         ),
                         const SizedBox(
                           height: 25,
                         ),
-                        Container(
-                          height: 40,
-                          width: 180,
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color:
-                              const Color.fromARGB(255, 211, 220, 230),
-                              width: 1.5,
+                        if (user is! Instructor)
+                          Container(
+                            height: 40,
+                            width: 180,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: const Color.fromARGB(255, 211, 220, 230),
+                                width: 1.5,
+                              ),
+                              borderRadius: BorderRadius.circular(32.0),
                             ),
-                            borderRadius: BorderRadius.circular(32.0),
-                          ),
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              shape: const StadiumBorder(),
-                              backgroundColor:
-                              const Color.fromARGB(255, 233, 240, 255),
-                              foregroundColor: Colors.black,
-                            ),
-                            onPressed: () async {
-                              // Toggle follow or unfollow
-                              // You can handle the follow/unfollow logic outside the widget
-                              // based on the current state of `isCourseFollowed`
-                            },
-                            child: Text(
-                              isCourseFollowed ? 'Unfollow' : 'Follow',
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                shape: const StadiumBorder(),
+                                backgroundColor:
+                                    const Color.fromARGB(255, 233, 240, 255),
+                                foregroundColor: Colors.black,
+                              ),
+                              onPressed: () async {
+                                widget.isCourseFollowed =
+                                    !widget.isCourseFollowed;
+                                setState(() {});
+                              },
+                              child: Text(
+                                widget.isCourseFollowed ? 'Unfollow' : 'Follow',
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                ),
                               ),
                             ),
                           ),
-                        ),
                       ],
                     ),
                   ),
