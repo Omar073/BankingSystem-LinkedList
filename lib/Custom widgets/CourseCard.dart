@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../Classes/Student.dart';
 import '../Classes/User.dart';
 import '../Providers/UserProvider.dart';
 import '../pages/CourseInfo.dart';
@@ -22,6 +23,14 @@ class CourseCard extends StatelessWidget {
   Widget build(BuildContext context) {
     user = context.watch<UserProvider>().user!;
 
+    // Check if the course is followed by the user
+    bool kisCourseFollowed = false;
+    if (user is Student) {
+      kisCourseFollowed = (user as Student).isCourseFollowed(courseID);
+
+    }
+
+
     return GestureDetector(
       onTap: () {
       //  Navigate to CourseInfoScreen
@@ -31,7 +40,7 @@ class CourseCard extends StatelessWidget {
                 courseID: courseID,
                 courseName: courseName,
                 courseCode: courseCode
-                , isCourseFollowed: false,
+                , isCourseFollowed: kisCourseFollowed,
             ),
 
             // Replace with your CourseInfoScreen widget
@@ -109,7 +118,7 @@ class CourseCard extends StatelessWidget {
                           courseID: courseID,
                           courseName: courseName,
                           courseCode: courseCode
-                          , isCourseFollowed: false,
+                          , isCourseFollowed: kisCourseFollowed ,
                         ),
                         // Replace with your CourseInfoScreen widget
                       ),
