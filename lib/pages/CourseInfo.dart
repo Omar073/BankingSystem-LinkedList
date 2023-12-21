@@ -11,8 +11,8 @@ class CourseInfo extends StatelessWidget {
     required this.courseName,
     required this.courseCode,
     required this.isCourseFollowed,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -38,10 +38,14 @@ abstract class User{ // TODO: make abstract?
 
   // Function to view all courses offered in a specific center
   void viewCoursesInCenter(List<Course> allCourses, myCenter center) {
-    print("Courses offered at ${center.centerName}:");
+    if (kDebugMode) {
+      print("Courses offered at ${center.centerName}:");
+    }
     for (var course in allCourses) {
       if (course.availableCenters.contains(center)) {
-        print("${course.courseName} - ${course.courseDescription}");
+        if (kDebugMode) {
+          print("${course.courseName} - ${course.courseDescription}");
+        }
       }
     }
   }
