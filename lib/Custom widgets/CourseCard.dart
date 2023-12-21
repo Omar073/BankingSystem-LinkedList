@@ -1,31 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../Classes/User.dart';
+import '../Providers/UserProvider.dart';
 import '../pages/CourseInfo.dart';
 // import 'package:class_mate/pages/CourseInfo.dart';
 
-class CourseItem extends StatelessWidget {
+class CourseCard extends StatelessWidget {
   final String courseName;
   final String courseCode;
   final String courseID;
+  late User user;
 
-  const CourseItem({
+  CourseCard({
     required this.courseName,
     required this.courseCode,
     required this.courseID,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
+    user = context.watch<UserProvider>().user!;
+
     return GestureDetector(
       onTap: () {
       //  Navigate to CourseInfoScreen
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) => CourseInfo(
-                courseID: this.courseID,
-                courseName: this.courseName,
-                courseCode: this
-                    .courseCode
+                courseID: courseID,
+                courseName: courseName,
+                courseCode: courseCode
                 , isCourseFollowed: false,
             ),
 
@@ -98,14 +103,17 @@ class CourseItem extends StatelessWidget {
                 child: IconButton(
                   color: Colors.black,
                   onPressed: () {
-                    // Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //         builder: (context) => CourseInfo(
-                    //           courseName: courseName,
-                    //           courseCode: courseCode,
-                    //           courseID: courseID,
-                    //         ))); // TODO: may need to replace this with routing
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => CourseInfo(
+                          courseID: courseID,
+                          courseName: courseName,
+                          courseCode: courseCode
+                          , isCourseFollowed: false,
+                        ),
+                        // Replace with your CourseInfoScreen widget
+                      ),
+                    );
                   }, // TODO: course page all show same course
                   //! we can temporarily just send the course info to course page but i would like to know how to access it directly
                   icon: const Icon(Icons.arrow_forward),

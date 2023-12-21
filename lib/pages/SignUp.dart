@@ -1,4 +1,4 @@
-import 'package:ClassMate/widgets/loading.dart';
+import 'package:ClassMate/Custom widgets/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 

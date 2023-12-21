@@ -7,14 +7,14 @@ class AdminPanel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Course Options'),
+        title: const Text('Course Options'),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           ListTile(
-            leading: Icon(Icons.add),
-            title: Text('Add a Course'),
+            leading: const Icon(Icons.add),
+            title: const Text('Add a Course'),
             onTap: () {
               // navigate to AddCoursePage
               // Navigator.of(context).push(
@@ -25,8 +25,8 @@ class AdminPanel extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.edit),
-            title: Text('Edit Course'),
+            leading: const Icon(Icons.edit),
+            title: const Text('Edit Course'),
             onTap: () {
               // Handle Edit Course option
               // navigate to AddCoursePage
@@ -38,8 +38,20 @@ class AdminPanel extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.notifications),
-            title: Text('Push Notification to Course'),
+            leading: const Icon(Icons.notifications),
+            title: const Text('Push Notification to Course'),
+            onTap: () {
+              // Navigator.of(context).push(
+              //   MaterialPageRoute(
+              //     builder: (context) => PushNotification(),
+              //   ),
+              // );
+              // Handle Push Notification option
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.person_add),
+            title: const Text('Assign instructor to Course'),
             onTap: () {
               // Navigator.of(context).push(
               //   MaterialPageRoute(
