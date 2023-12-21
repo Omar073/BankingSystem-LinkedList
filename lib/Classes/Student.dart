@@ -115,6 +115,20 @@ class Student extends User {
   bool isCourseFollowed(String courseId) {
     return registeredCourses.any((course) => course.courseID == courseId);
   }
+
+  // function to remove a course from the registered courses
+  void removeCourse(String courseId) {
+
+    if(isCourseFollowed(courseId)){
+    registeredCourses.removeWhere((course) => course.courseID == courseId);
+    }
+    else{
+      print("Course not found in your registered courses");
+    }
+
+  }
+
+
 }
 
 // Student 1
