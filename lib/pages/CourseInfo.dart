@@ -1,7 +1,9 @@
+import 'package:ClassMate/Classes/Course.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../Classes/Instructor.dart';
+import '../Classes/Student.dart';
 import '../Classes/User.dart';
 import '../Providers/UserProvider.dart';
 
@@ -106,9 +108,53 @@ class _CourseInfoState extends State<CourseInfo> {
                                 foregroundColor: Colors.black,
                               ),
                               onPressed: () async {
-                                widget.isCourseFollowed =
+                                if (widget.isCourseFollowed && user is Student){
+                                  try {
+                                    // Find the corresponding Course object
+                                    Course selectedCourse = courses
+                                        .firstWhere(
+                                          (course) =>
+                                      course.courseID == widget.courseID,
+                                    );
+
+                                    // remove the course to the student's registered course list
+                                    (user as Student).unregisterCourse(
+                                        selectedCourse);
+                                    widget.isCourseFollowed =
                                     !widget.isCourseFollowed;
+                                  } catch (e) {
+                                    print(e);
+                                    // Handle the case when the course is not found
+                                    print('Course not found!');
+                                  }
+
+
+                                }else {
+
+                                  if (
+                                      user is Student) {
+                                    try {
+                                      // Find the corresponding Course object
+                                      Course selectedCourse = courses
+                                          .firstWhere(
+                                            (course) =>
+                                        course.courseID == widget.courseID,
+                                      );
+
+                                      // Add the course to the student's registered course list
+                                      (user as Student).registerCourse(
+                                          selectedCourse);
+                                      widget.isCourseFollowed =
+                                      !widget.isCourseFollowed;
+                                    } catch (e) {
+                                      print(e);
+                                      // Handle the case when the course is not found
+                                      print('Course not found!');
+                                    }
+                                  }
+                                }
                                 setState(() {});
+
                               },
                               child: Text(
                                 widget.isCourseFollowed ? 'Unfollow' : 'Follow',
