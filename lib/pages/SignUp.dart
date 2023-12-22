@@ -1,6 +1,6 @@
 import 'package:ClassMate/Custom widgets/loading.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_pw_validator/flutter_pw_validator.dart';
+// import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -17,8 +17,8 @@ class _SignUpState extends State<SignUp> {
   var hidePass = true;
   var passIcons = const Icon(Icons.visibility_off);
   bool loading = false;
-  final GlobalKey<FlutterPwValidatorState> validatorKey =
-      GlobalKey<FlutterPwValidatorState>();
+  // final GlobalKey<FlutterPwValidatorState> validatorKey =
+  //     GlobalKey<FlutterPwValidatorState>();
 
   // Valid email domains
   final List<String> allowedDomains = ['gmail.com', 'hotmail.com', 'yahoo.com'];
@@ -87,8 +87,13 @@ class _SignUpState extends State<SignUp> {
       if (!passwordRegExp.hasMatch(password)) {
         setState(() => loading = false);
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text("Error: Password does not meet the criteria."),
+          const SnackBar(
+            content: Text(
+              "Error: Password must meet the following criteria:\n"
+                  "- At least one uppercase letter\n"
+                  "- At least one digit\n"
+                  "- Minimum length of 8 characters",
+            ),
           ),
         );
         return;

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../Classes/Admin.dart';
+import '../Classes/Student.dart';
 import '../Classes/User.dart';
 import '../Providers/UserProvider.dart';
 import '../adminPage/adminPanel.dart';
@@ -21,16 +22,15 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0; // Index of the selected tab
   late User user;
 
-  final List<Widget> _pages = [
-    const SearchCourses(), // Your original home page content
-    FavouritesPage(), // Add your FavouritesPage here
-    const SettingsPage(), // Placeholder for Account Page
-    const AdminPanel(), // Add your AdminPanel here
-  ];
-
   @override
   Widget build(BuildContext context) {
     user = context.watch<UserProvider>().user!;
+    final List<Widget> _pages = [
+      const SearchCourses(), // Your original home page content
+      if (user is Student) FavouritesPage(), // Add your FavouritesPage here
+      const SettingsPage(), // Placeholder for Account Page
+      if (user is Admin) const AdminPanel(), // Add your AdminPanel here
+    ];
 
     return Scaffold(
       body: _pages[_selectedIndex], // Show the selected page content
@@ -53,21 +53,22 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          FlashyTabBarItem(
-            icon: const Icon(
-              Icons.favorite,
-              size: 30,
-              color: Colors.grey,
-            ),
-            title: const Text(
-              'Favourites',
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF52B6DF),
+          if (user is Student)
+            FlashyTabBarItem(
+              icon: const Icon(
+                Icons.favorite,
+                size: 30,
+                color: Colors.grey,
+              ),
+              title: const Text(
+                'Favourites',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF52B6DF),
+                ),
               ),
             ),
-          ),
           FlashyTabBarItem(
             icon: const Icon(
               Icons.person,

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'AddCoursePage.dart';
+
 class AdminPanel extends StatelessWidget {
   const AdminPanel({Key? key}) : super(key: key);
 
@@ -17,11 +19,11 @@ class AdminPanel extends StatelessWidget {
             title: const Text('Add a Course'),
             onTap: () {
               // navigate to AddCoursePage
-              // Navigator.of(context).push(
-              //   MaterialPageRoute(
-              //     builder: (context) => AddCoursePage(),
-              //   ),
-              // );
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => AddCoursePage(),
+                ),
+              );
             },
           ),
           ListTile(

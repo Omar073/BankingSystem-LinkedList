@@ -108,7 +108,7 @@ Instructor instructorSmith = Instructor(
 
 // Instructor 3
 Instructor instructorCbum = Instructor(
-  name: "Chris Bumsead",
+  name: "Chris Bumstead",
   ID: "I003",
   age: 35,
   phonenum: "987-654-3210",
