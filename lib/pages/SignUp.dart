@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../Classes/Student.dart';
-import '../Classes/User.dart';
 import '../Custom widgets/loading.dart';
 import '../Providers/UserProvider.dart';
 import 'SignUp2.dart';
 // import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 
 class SignUp extends StatefulWidget {
-  const SignUp({Key? key}) : super(key: key);
+  const SignUp({super.key});
 
   @override
   State<SignUp> createState() => _SignUpState();
@@ -86,40 +84,6 @@ class _SignUpState extends State<SignUp> {
     String emailRegex =
         r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)*(\.[a-zA-Z]{2,})$';
     return RegExp(emailRegex).hasMatch(email);
-  }
-
-  Future<void> _handleSignUp() async {
-    setState(() => loading = true);
-
-    if (_formKey.currentState!.validate()) {
-      // Custom password validation
-      final password = passCont.text;
-      final passwordRegExp = RegExp(r'^(?=.*[A-Z])(?=.*\d).{8,}$');
-
-      if (!passwordRegExp.hasMatch(password)) {
-        setState(() => loading = false);
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text(
-              "Error: Password must meet the following criteria:\n"
-              "- At least one uppercase letter\n"
-              "- At least one digit\n"
-              "- Minimum length of 8 characters",
-            ),
-          ),
-        );
-        return;
-      }
-
-      // Perform your custom registration logic here
-
-      // Dismiss the loading page
-      setState(() => loading = false);
-
-      // Handle the success or failure of registration
-    } else {
-      setState(() => loading = false);
-    }
   }
 
   @override
