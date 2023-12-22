@@ -18,41 +18,54 @@ ClassMate is a Flutter mobile application designed to streamline and enhance the
 
 ## Screenshots
 
-1. Landing11 Page
+1. Landing Page
+   
    ![Landing Page](https://github.com/Omar073/ClassMate-SWproj/assets/120687551/cf66ecee-c7e0-495f-9c8d-fbc26df8a266)
 
-2. Login Page
+3. Login Page
+   
    ![LogIn Page](https://github.com/Omar073/ClassMate-SWproj/assets/120687551/f0022a7c-7343-4637-b148-820a10b4c170)
 
-3. Signup Page 1
+5. Signup Page 1
+   
    ![SignUp Page 1](https://github.com/Omar073/ClassMate-SWproj/assets/120687551/2d4201f9-ca71-4bed-b3ce-21be08937c1b)
 
-4. Signup Page 2
+7. Signup Page 2
+   
    ![SignUp Page 2](https://github.com/Omar073/ClassMate-SWproj/assets/120687551/1a47ac2e-858b-4933-8157-a050fd6ac787)
 
-5. Courses List
+9. Courses List
+    
    ![CoursesList Page](https://github.com/Omar073/ClassMate-SWproj/assets/120687551/76092ef3-60b6-4a4c-a8aa-dd3a69de0ba1)
 
-6. Centers List
+11. Centers List
+    
    ![CentersList Page ](https://github.com/Omar073/ClassMate-SWproj/assets/120687551/3eb51fe3-19ba-4d57-ac00-aa2aec18b098)
 
-7. Courseinfo Page
+12. Courseinfo Page
+    
    ![CourseInfo Page](https://github.com/Omar073/ClassMate-SWproj/assets/120687551/6426bc84-ed7f-4c2d-adeb-ce98ebebd6f1)
 
-8. Center Info Page
+13. Center Info Page
+    
    ![CenterInfo Page](https://github.com/Omar073/ClassMate-SWproj/assets/120687551/f995a60a-19b1-4389-ad80-149410ce5afe)
 
-10. Followed Courses Page
+14. Followed Courses Page
+    
    ![FollowedCourses Page](https://github.com/Omar073/ClassMate-SWproj/assets/120687551/9f3f7bfc-8399-424b-b812-205011f8a91a)
 
-11. Profile Page
+15. Profile Page
+    
     ![Profile Page](https://github.com/Omar073/ClassMate-SWproj/assets/120687551/62297019-fa24-4e34-9819-b0a1e1d06b6d)
 
-12. Admin Page
+16. Admin Page
+    
     ![Admin Page](https://github.com/Omar073/ClassMate-SWproj/assets/120687551/06bc69df-12ab-4b29-9c44-ceaf0354ef8b)
 
-13. Add Course Page
+17. Add Course Page
+    
     ![Add Course Page](https://github.com/Omar073/ClassMate-SWproj/assets/120687551/5da8bf41-a6b8-47dd-b60a-f969f0eccade)
 
-14. Users List Page
+18. Users List Page
+    
     ![Users List Page](https://github.com/Omar073/ClassMate-SWproj/assets/120687551/60eea909-17e4-447c-9759-5c63c3e7e3a3)
