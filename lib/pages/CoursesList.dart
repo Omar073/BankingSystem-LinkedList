@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../Classes/Center.dart';
 import '../Classes/Course.dart';
 import '../Classes/User.dart';
+import '../Custom widgets/CenterCard.dart';
 import '../Custom widgets/CourseCard.dart';
 import '../Providers/UserProvider.dart';
 
-class SearchCourses extends StatefulWidget {
-  const SearchCourses({super.key});
+class CoursesList extends StatefulWidget {
+  const CoursesList({super.key});
 
   @override
-  _SearchCoursesState createState() => _SearchCoursesState();
+  _CoursesListState createState() => _CoursesListState();
 }
 
-class _SearchCoursesState extends State<SearchCourses> {
+class _CoursesListState extends State<CoursesList> {
   bool _isCoursesSelected = true;
   late User user;
 
@@ -27,6 +29,14 @@ class _SearchCoursesState extends State<SearchCourses> {
     return courses.map((course) {
       return CourseCard(
         course: course,
+      );
+    }).toList();
+  }
+
+  List<CenterCard> _buildCenterItems(List<myCenter> centers) {
+    return centers.map((center) {
+      return CenterCard(
+        center: center,
       );
     }).toList();
   }
@@ -62,6 +72,8 @@ class _SearchCoursesState extends State<SearchCourses> {
                       height: 1.2,
                     ),
                   ),
+                  const Icon(Icons.menu_book_outlined,
+                      color: Color(0xFF7BB4E3), size: 30),
                 ],
               ),
               const SizedBox(height: 24.0),
@@ -131,9 +143,11 @@ class _SearchCoursesState extends State<SearchCourses> {
                       height: screenHeight / 1.7,
                       child: ListView.builder(
                         shrinkWrap: true,
-                        itemCount:
-                            5, // Replace with the desired number of items
-                        itemBuilder: (context, index) {},
+                        itemCount: _buildCenterItems(centers)
+                            .length, // Replace with the desired number of items
+                        itemBuilder: (context, index) {
+                          return _buildCenterItems(centers)[index];
+                        },
                       ),
                     ),
             ],

@@ -1,10 +1,10 @@
-import 'package:ClassMate/pages/HomeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../Classes/Student.dart';
 import '../Classes/User.dart';
 import '../Providers/UserProvider.dart';
+import 'HomeScreen.dart';
 
 class SignUp2 extends StatefulWidget {
   const SignUp2({super.key});

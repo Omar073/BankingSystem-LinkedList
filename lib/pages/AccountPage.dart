@@ -1,10 +1,10 @@
-import 'package:ClassMate/pages/SettingsPage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../Classes/User.dart';
 import '../Providers/UserProvider.dart';
 import 'LoginPage.dart';
+import 'SettingsPage.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});

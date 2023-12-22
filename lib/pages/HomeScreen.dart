@@ -1,5 +1,4 @@
-import 'package:ClassMate/pages/AccountPage.dart';
-import 'package:ClassMate/pages/SearchCourses.dart';
+
 import 'package:flashy_tab_bar2/flashy_tab_bar2.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -9,7 +8,9 @@ import '../Classes/Student.dart';
 import '../Classes/User.dart';
 import '../Providers/UserProvider.dart';
 import '../adminPage/adminPanel.dart';
+import 'AccountPage.dart';
 import 'FavouritesPage.dart';
+import 'CoursesList.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -26,7 +27,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     user = context.watch<UserProvider>().user!;
     final List<Widget> _pages = [
-      const SearchCourses(), // Your original home page content
+      const CoursesList(), // Your original home page content
       if (user is Student) FavouritesPage(), // Add your FavouritesPage here
       const SettingsPage(), // Placeholder for Account Page
       if (user is Admin) const AdminPanel(), // Add your AdminPanel here

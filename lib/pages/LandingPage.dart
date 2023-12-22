@@ -1,12 +1,11 @@
-import 'package:ClassMate/Classes/Center.dart';
-import 'package:ClassMate/Classes/Course.dart';
-import 'package:ClassMate/pages/SignUp.dart';
 import 'package:flutter/material.dart';
-
+import '../Classes/Center.dart';
+import '../Classes/Course.dart';
 import '../Classes/Instructor.dart';
 import '../Classes/Student.dart';
 import '../Classes/User.dart';
 import 'LoginPage.dart';
+import 'SignUp.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
@@ -92,69 +91,71 @@ class _LandingPageState extends State<LandingPage> {
       //           ],
       backgroundColor: const Color(0xFF7BB4E3),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(height: 25),
-            const Text(
-              'Welcome to \nClassmate',
-              style: TextStyle(
-                fontSize: 48,
-                fontWeight: FontWeight.bold,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SizedBox(height: 25),
+              const Text(
+                'Welcome to \nClassmate',
+                style: TextStyle(
+                  fontSize: 48,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            const Text(
-              'Your Way to A+',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-            Image.asset(
-              'assets/images/classmate1.png',
-              width: 450,
-              height: 350,
-            ), // Adjust spacing as needed
-            SizedBox(
-              width: 296,
-              height: 50,
-              child: ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.orange),
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
+              const Text(
+                'Your Way to A+',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+              Image.asset(
+                'assets/images/classmate1.png',
+                width: 450,
+                height: 350,
+              ), // Adjust spacing as needed
+              SizedBox(
+                width: 296,
+                height: 50,
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(Colors.orange),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
                     ),
                   ),
-                ),
-                child: const Text(
-                  'Let\'s go',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
+                  child: const Text(
+                    'Let\'s go',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 24,
+                    ),
                   ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => LoginPage()), // * Go to LoginPage
+                    );
+                  },
                 ),
+              ),
+              TextButton(
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => LoginPage()), // * Go to LoginPage
+                    MaterialPageRoute(builder: (context) => SignUp()), // * Go to SignUp
                   );
                 },
+                child: const Text(
+                  'Continue as Guest',
+                  style: TextStyle(color: Colors.black),
+                  textAlign: TextAlign.center,
+                ),
               ),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SignUp()), // * Go to SignUp
-                );
-              },
-              child: const Text(
-                'Continue as Guest',
-                style: TextStyle(color: Colors.black),
-                textAlign: TextAlign.center,
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

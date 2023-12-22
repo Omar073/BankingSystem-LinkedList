@@ -1,7 +1,7 @@
-import 'package:ClassMate/Classes/Schedule.dart';
 import 'package:flutter/material.dart';
 
 import '../Classes/Course.dart';
+import '../Classes/Schedule.dart';
 
 class AddCoursePage extends StatefulWidget {
   const AddCoursePage({Key? key}) : super(key: key);

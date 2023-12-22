@@ -1,9 +1,9 @@
-import 'package:ClassMate/Custom widgets/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../Classes/Student.dart';
 import '../Classes/User.dart';
+import '../Custom widgets/loading.dart';
 import '../Providers/UserProvider.dart';
 import 'SignUp2.dart';
 // import 'package:flutter_pw_validator/flutter_pw_validator.dart';
