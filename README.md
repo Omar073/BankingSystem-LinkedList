@@ -40,19 +40,19 @@ ClassMate is a Flutter mobile application designed to streamline and enhance the
    ![CourseInfo Page](https://github.com/Omar073/ClassMate-SWproj/assets/120687551/6426bc84-ed7f-4c2d-adeb-ce98ebebd6f1)
 
 8. Center Info Page
-   ![CourseInfo Page](https://github.com/Omar073/ClassMate-SWproj/assets/120687551/cc49615b-bf3a-446c-aa33-133bbeb480f8)
+   ![CenterInfo Page](https://github.com/Omar073/ClassMate-SWproj/assets/120687551/f995a60a-19b1-4389-ad80-149410ce5afe)
 
-9. Followed Courses Page
+10. Followed Courses Page
    ![FollowedCourses Page](https://github.com/Omar073/ClassMate-SWproj/assets/120687551/9f3f7bfc-8399-424b-b812-205011f8a91a)
 
-10. Profile Page
+11. Profile Page
     ![Profile Page](https://github.com/Omar073/ClassMate-SWproj/assets/120687551/62297019-fa24-4e34-9819-b0a1e1d06b6d)
 
-11. Admin Page
+12. Admin Page
     ![Admin Page](https://github.com/Omar073/ClassMate-SWproj/assets/120687551/06bc69df-12ab-4b29-9c44-ceaf0354ef8b)
 
-12. Add Course Page
+13. Add Course Page
     ![Add Course Page](https://github.com/Omar073/ClassMate-SWproj/assets/120687551/5da8bf41-a6b8-47dd-b60a-f969f0eccade)
 
-13. Users List Page
+14. Users List Page
     ![Users List Page](https://github.com/Omar073/ClassMate-SWproj/assets/120687551/60eea909-17e4-447c-9759-5c63c3e7e3a3)
