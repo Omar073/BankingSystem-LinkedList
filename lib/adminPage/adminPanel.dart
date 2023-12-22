@@ -1,3 +1,4 @@
+import 'package:classmate/pages/UsersListPage.dart';
 import 'package:flutter/material.dart';
 
 import 'AddCoursePage.dart';
@@ -60,6 +61,18 @@ class AdminPanel extends StatelessWidget {
               //     builder: (context) => PushNotification(),
               //   ),
               // );
+              // Handle Push Notification option
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.people_alt_outlined),
+            title: const Text('View all users'),
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const UsersListPage(),
+                ),
+              );
               // Handle Push Notification option
             },
           ),
