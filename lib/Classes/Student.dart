@@ -15,24 +15,17 @@ class Student extends User {
 
   // Constructor with named parameters
   Student({
-    required String name,
-    required String ID,
-    required int age,
-    required String phonenum,
-    required String email,
-    required String password,
+    required super.name,
+    required super.ID,
+    required super.age,
+    required super.phonenum,
+    required super.email,
+    required super.password,
     required String year, // Change from String to int
     required String college,
     required String major,
     required String university,
-  }) : super(
-    name: name,
-    ID: ID,
-    age: age,
-    phonenum: phonenum,
-    email: email,
-    password: password,
-  ) {
+  }) {
     _year = year;
     _college = college;
     _major = major;
@@ -123,12 +116,16 @@ class Student extends User {
     registeredCourses.removeWhere((course) => course.courseID == courseId);
     }
     else{
-      print("Course not found in your registered courses");
+      if (kDebugMode) {
+        print("Course not found in your registered courses");
+      }
     }
-
   }
 
-
+  String generateNextID() {
+    int nextID = int.parse(students.last.ID.substring(1)) + 1; // substring(1): This removes the first character of the student's ID. For example, "S001" becomes "001"
+    return "S${nextID.toString().padLeft(3, '0')}";
+  }
 }
 
 // Student 1
@@ -251,4 +248,5 @@ List<Student> students = [
   studentFadel,
   studentKarim,
   studentEsmat,
+  studentYoussef,
 ];
