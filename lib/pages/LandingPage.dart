@@ -33,24 +33,28 @@ class _LandingPageState extends State<LandingPage> {
 
     pioneerCenter.addCourseToCenter(C001);
     pioneerCenter.addCourseToCenter(C004);
+    pioneerCenter.addCourseToCenter(C005);
 
     // * add centers to coursers
     C001.addCenterToCourse(pioneerCenter);
     C004.addCenterToCourse(pioneerCenter);
-
+    C005.addCenterToCourse(pioneerCenter);
     C002.addCenterToCourse(techCenter);
     C003.addCenterToCourse(techCenter);
+
 
     // * Add instructors to courses
     C001.addInstructorToCourse(instructorNinja);
     C002.addInstructorToCourse(instructorCbum);
     C003.addInstructorToCourse(instructorSmith);
+    C005.addInstructorToCourse(instructorSmith);
     C004.addInstructorToCourse(instructorCbum);
 
     // *Add courses to Instructors
     instructorNinja.addCourse(C001);
     instructorCbum.addCourse(C002);
     instructorSmith.addCourse(C003);
+    instructorSmith.addCourse(C005);
     instructorCbum.addCourse(C004);
   }
 
