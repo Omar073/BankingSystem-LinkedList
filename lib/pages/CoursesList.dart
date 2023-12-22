@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../Classes/Center.dart';
 import '../Classes/Course.dart';
 import '../Classes/User.dart';
+import '../Custom widgets/CenterCard.dart';
 import '../Custom widgets/CourseCard.dart';
 import '../Providers/UserProvider.dart';
 
@@ -27,6 +29,14 @@ class _CoursesListState extends State<CoursesList> {
     return courses.map((course) {
       return CourseCard(
         course: course,
+      );
+    }).toList();
+  }
+
+  List<CenterCard> _buildCenterItems(List<myCenter> centers) {
+    return centers.map((center) {
+      return CenterCard(
+        center: center,
       );
     }).toList();
   }
@@ -62,11 +72,8 @@ class _CoursesListState extends State<CoursesList> {
                       height: 1.2,
                     ),
                   ),
-                  const Icon (
-                    Icons.menu_book_outlined,
-                    color: Color(0xFF7BB4E3),
-                    size: 30
-                  ),
+                  const Icon(Icons.menu_book_outlined,
+                      color: Color(0xFF7BB4E3), size: 30),
                 ],
               ),
               const SizedBox(height: 24.0),
@@ -136,9 +143,11 @@ class _CoursesListState extends State<CoursesList> {
                       height: screenHeight / 1.7,
                       child: ListView.builder(
                         shrinkWrap: true,
-                        itemCount:
-                            5, // Replace with the desired number of items
-                        itemBuilder: (context, index) {},
+                        itemCount: _buildCenterItems(centers)
+                            .length, // Replace with the desired number of items
+                        itemBuilder: (context, index) {
+                          return _buildCenterItems(centers)[index];
+                        },
                       ),
                     ),
             ],

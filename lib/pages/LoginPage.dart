@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import '../Classes/User.dart';
 import '../Providers/UserProvider.dart';
 import 'HomeScreen.dart';
+import 'SignUp.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -289,8 +290,11 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           TextButton(
                             onPressed: () {
-                              Navigator.pushReplacementNamed(
-                                  context, '/sign_up');
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const SignUp()),
+                              );
                             },
                             child: const Text("Sign up"),
                           ),
