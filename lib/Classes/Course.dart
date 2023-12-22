@@ -217,4 +217,19 @@ Course C004 = Course(
   courseSchedule: schedule2,
 );
 
-List<Course> courses = [C001, C002, C003, C004];
+// course 5
+Course C005 = Course(
+  courseID: "C005",
+  courseName: "Introduction to Data Science",
+  courseDescription: "Learn the basics of data science.",
+  assignedStudents: [studentOmar, studentEsmat, studentKarim],
+  // availableCenters: [pioneerCenter],
+  maxCapacity: 50,
+  startDate: DateTime(2023, 11, 20),
+  endDate: DateTime(2024, 1, 15),
+  prerequisites: ["None"],
+  isActive: true,
+  courseSchedule: schedule2,
+);
+
+List<Course> courses = [C001, C002, C003, C004, C005];

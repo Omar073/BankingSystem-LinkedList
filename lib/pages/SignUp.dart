@@ -1,5 +1,11 @@
 import 'package:ClassMate/Custom widgets/loading.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../Classes/Student.dart';
+import '../Classes/User.dart';
+import '../Providers/UserProvider.dart';
+import 'SignUp2.dart';
 // import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 
 class SignUp extends StatefulWidget {
@@ -76,6 +82,12 @@ class _SignUpState extends State<SignUp> {
     return null; // Return null if the email is valid
   }
 
+  bool isValidEmail(String email) {
+    String emailRegex =
+        r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)*(\.[a-zA-Z]{2,})$';
+    return RegExp(emailRegex).hasMatch(email);
+  }
+
   Future<void> _handleSignUp() async {
     setState(() => loading = true);
 
@@ -90,9 +102,9 @@ class _SignUpState extends State<SignUp> {
           const SnackBar(
             content: Text(
               "Error: Password must meet the following criteria:\n"
-                  "- At least one uppercase letter\n"
-                  "- At least one digit\n"
-                  "- Minimum length of 8 characters",
+              "- At least one uppercase letter\n"
+              "- At least one digit\n"
+              "- Minimum length of 8 characters",
             ),
           ),
         );
@@ -113,7 +125,7 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return loading
-        ? Loading() // Using your custom Loading widget
+        ? const Loading() // Using your custom Loading widget
         : Scaffold(
             appBar: AppBar(
               title: const Text("Sign Up"),
@@ -207,15 +219,68 @@ class _SignUpState extends State<SignUp> {
                               color: Colors.blue,
                               borderRadius: BorderRadius.circular(12.0)),
                           child: MaterialButton(
-                            onPressed: () async {
-                              setState(() => loading = true);
-                              await _handleSignUp();
+                            onPressed: () {
+                              //TODO: add sign up logic
+                              String email = emailCont.text;
+                              String password = passCont.text;
+                              String name = nameCont.text;
+
+                              // Check email criteria
+                              if (!isValidEmail(email)) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text(
+                                      "Error: Please enter a valid email address.",
+                                    ),
+                                  ),
+                                );
+                                return;
+                              }
+                              // Check email criteria
+                              if (name.isEmpty) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text(
+                                      "Error: name can't be empty.",
+                                    ),
+                                  ),
+                                );
+                                return;
+                              }
+
+                              // Check password criteria
+                              final passwordRegExp =
+                                  RegExp(r'^(?=.*[A-Z])(?=.*\d).{8,}$');
+
+                              if (!passwordRegExp.hasMatch(password)) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text(
+                                      "Error: Password must meet the following criteria:\n"
+                                      "- At least one uppercase letter\n"
+                                      "- At least one digit\n"
+                                      "- Minimum length of 8 characters",
+                                    ),
+                                  ),
+                                );
+                                return;
+                              }
+
+                              Student currentUser = Student(
+                                name: name,
+                                email: email,
+                                password: password, ID: '', age: 0, phonenum: '', year: '', college: '',
+                                  major: '', university: ''
+                              );
+                              currentUser.ID = currentUser.generateNextID();
+                              context.read<UserProvider>().setCurrentUser(currentUser);
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => const SignUp2()));
                             },
                             child: const Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  "Sign Up",
+                                  "Continue",
                                   style: TextStyle(
                                       fontSize: 18, color: Colors.white),
                                 )
@@ -226,71 +291,71 @@ class _SignUpState extends State<SignUp> {
                       ),
                     ),
                     // ... rest of the UI remains unchanged
-                    Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: Container(
-                              margin: const EdgeInsets.only(right: 8.0),
-                              height: 1.0, // Adjust the height as needed
-                              color: Colors.grey[600], // Color of the dashes
-                            ),
-                          ),
-                          Text(
-                            "or",
-                            style: TextStyle(
-                              color: Colors.grey[800],
-                              fontSize: 18,
-                            ),
-                          ),
-                          Expanded(
-                            child: Container(
-                              margin: const EdgeInsets.only(left: 8.0),
-                              height: 1.0, // Adjust the height as needed
-                              color: Colors.grey[600], // Color of the dashes
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Center(
-                      child: Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Container(
-                          padding: const EdgeInsets.all(8.0),
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Colors.grey.shade300, // Border color
-                                width: 2.0, // Border width
-                              ),
-                              borderRadius: BorderRadius.circular(12.0)),
-                          child: MaterialButton(
-                            onPressed: () async {
-                              setState(() => loading = true);
-                              // Add your Google Sign-Up logic here
-                            },
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(
-                                  width: 50.0,
-                                  height: 50.0,
-                                  // padding: EdgeInsets.all(10.0),
-                                  alignment: Alignment.center,
-                                  child:
-                                      Image.asset("assets/images/google.png"),
-                                ),
-                                const Text(
-                                  "Register with Google",
-                                  style: TextStyle(fontSize: 18),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
+                    // Padding(
+                    //   padding: const EdgeInsets.all(16.0),
+                    //   child: Row(
+                    //     children: [
+                    //       Expanded(
+                    //         child: Container(
+                    //           margin: const EdgeInsets.only(right: 8.0),
+                    //           height: 1.0, // Adjust the height as needed
+                    //           color: Colors.grey[600], // Color of the dashes
+                    //         ),
+                    //       ),
+                    //       Text(
+                    //         "or",
+                    //         style: TextStyle(
+                    //           color: Colors.grey[800],
+                    //           fontSize: 18,
+                    //         ),
+                    //       ),
+                    //       Expanded(
+                    //         child: Container(
+                    //           margin: const EdgeInsets.only(left: 8.0),
+                    //           height: 1.0, // Adjust the height as needed
+                    //           color: Colors.grey[600], // Color of the dashes
+                    //         ),
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
+                    // Center(
+                    //   child: Padding(
+                    //     padding: const EdgeInsets.all(16.0),
+                    //     child: Container(
+                    //       padding: const EdgeInsets.all(8.0),
+                    //       decoration: BoxDecoration(
+                    //           border: Border.all(
+                    //             color: Colors.grey.shade300, // Border color
+                    //             width: 2.0, // Border width
+                    //           ),
+                    //           borderRadius: BorderRadius.circular(12.0)),
+                    // child: MaterialButton(
+                    //   onPressed: () async {
+                    //     setState(() => loading = true);
+                    //     // Add your Google Sign-Up logic here
+                    //   },
+                    //   child: Row(
+                    //     mainAxisAlignment: MainAxisAlignment.center,
+                    //     children: [
+                    //       Container(
+                    //         width: 50.0,
+                    //         height: 50.0,
+                    //         // padding: EdgeInsets.all(10.0),
+                    //         alignment: Alignment.center,
+                    //         child:
+                    //             Image.asset("assets/images/google.png"),
+                    //       ),
+                    //       const Text(
+                    //         "Register with Google",
+                    //         style: TextStyle(fontSize: 18),
+                    //       )
+                    //     ],
+                    //   ),
+                    // ),
+                    //     ),
+                    //   ),
+                    // ),
                     const SizedBox(height: 10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -303,7 +368,7 @@ class _SignUpState extends State<SignUp> {
                           ),
                         ),
                         TextButton(
-                          onPressed: () async {
+                          onPressed: () {
                             // Navigate to the login page
                             Navigator.pushReplacementNamed(context, '/login');
                           },
