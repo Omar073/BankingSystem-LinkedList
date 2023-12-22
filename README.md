@@ -18,7 +18,7 @@ ClassMate is a Flutter mobile application designed to streamline and enhance the
 
 ## Screenshots
 
-1. Landing Page
+1. Landing11 Page
    ![Landing Page](https://github.com/Omar073/ClassMate-SWproj/assets/120687551/cf66ecee-c7e0-495f-9c8d-fbc26df8a266)
 
 2. Login Page
