@@ -1,8 +1,7 @@
-import 'package:ClassMate/Classes/Course.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
+import '../Classes/Course.dart';
 import '../Classes/Instructor.dart';
 import '../Classes/Student.dart';
 import '../Classes/User.dart';
@@ -40,8 +39,17 @@ class _CourseInfoState extends State<CourseInfo> {
       home: Scaffold(
         backgroundColor: Colors.blueGrey[100],
         appBar: AppBar(
+          leading: IconButton(
+            icon: const Icon(
+              Icons.arrow_back_ios,
+              color: Colors.black,
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
           title: Text(
-            widget.course.courseName,
+            widget.course.courseID,
             style: const TextStyle(color: Colors.black, fontFamily: 'Poppins'),
           ),
           centerTitle: true,
@@ -70,7 +78,7 @@ class _CourseInfoState extends State<CourseInfo> {
                     borderRadius: BorderRadius.circular(40.0),
                   ),
                   width: width - 50,
-                  height: 250,
+                  height: 300,
                   child: Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
