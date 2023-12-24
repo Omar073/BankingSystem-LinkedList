@@ -58,7 +58,13 @@ class Course {
   String get courseDescription => _courseDescription;
   List<Student> get assignedStudents => _assignedStudents;
   // Get the assigned instructor for the course
-  Instructor get assignedInstructor => _assignedInstructor!;
+  // Instructor get assignedInstructor => _assignedInstructor!;
+
+  Instructor get assignedInstructor {
+    // Return the assigned instructor if it's not null or empty,
+    // otherwise, return a custom instructor (replace 'CustomInstructor' with your custom logic)
+    return _assignedInstructor ?? instructorSmith;
+  }
 
   // Get the available centers for the course
   List<myCenter> get availableCenters => _availableCenters!;

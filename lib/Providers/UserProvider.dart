@@ -7,8 +7,8 @@ class UserProvider with ChangeNotifier {
   User? _currentUser;
   User? get user => _currentUser;
 
-  void setCurrentUser(User newuser) {
-    _currentUser = newuser;
+  void setCurrentUser(User newUser) {
+    _currentUser = newUser;
     notifyListeners();
   }
 

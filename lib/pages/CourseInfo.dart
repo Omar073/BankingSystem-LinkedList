@@ -108,7 +108,7 @@ class _CourseInfoState extends State<CourseInfo> {
                           padding: const EdgeInsets.only(top: 16.0),
                           child: Text(
                             // get assigned instructor
-                            'Instructor: ${widget.course.assignedInstructor.name}',
+                            'Instructor: ${widget.course.assignedInstructor.name ?? 'no assigned instructor'}',
                             style: TextStyle(
                                 fontSize: 15, color: Colors.grey[700]),
                           ),
